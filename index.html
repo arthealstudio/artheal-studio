@@ -1,26 +1,29 @@
+<!-- index.html (SUBSTITUI TUDO no seu index atual) -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
- <title>Artheal Studio | Conteúdo criativo com estratégia</title>
+  <title>ArtHeal Studio | Comunicação estratégica, humana e visualmente consciente</title>
 
   <!-- SEO -->
-  <meta name="description" content="Artheal Studio. social media, fotografia e vídeo com estratégia para marcas que querem crescer com identidade. Chame no WhatsApp." />
+  <meta name="description" content="A ArtHeal ajuda marcas e profissionais a organizarem sua comunicação com clareza, intenção e propósito. Redes sociais, design, sites e consultoria prática de IA. Chame no WhatsApp." />
   <meta name="robots" content="index,follow" />
-  <meta name="author" content="Artheal Studio" />
+  <meta name="author" content="ArtHeal Studio" />
   <meta name="theme-color" content="#0b0b09" />
+  <link rel="canonical" href="https://arthealstudio.github.io/artheal-studio/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Artheal Studio" />
-  <meta property="og:description" content="Conteúdo criativo com estratégia: social media, fotografia e vídeo." />
+  <meta property="og:title" content="ArtHeal Studio" />
+  <meta property="og:description" content="Comunicação estratégica, humana e visualmente consciente. Conteúdo com intenção e clareza, sem complicar." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="foto.jpg" />
 
-  <!-- Favicon (sem emoji) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="logo-branco.png" />
 
-  <!-- Fonte legível -->
+  <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,7 +33,8 @@
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Artheal Studio",
+    "name": "ArtHeal Studio",
+    "url": "https://arthealstudio.github.io/artheal-studio/",
     "areaServed": "BR",
     "sameAs": [
       "https://instagram.com/artheal.studio",
@@ -53,10 +57,10 @@
       --t:240ms;
       --lift:7px;
 
-      /* Foto (ajuste caso queira depois) */
+      /* Foto */
       --heroFotoSize: 120px;     /* mobile */
       --heroFotoSizeDesk: 140px; /* desktop */
-      --heroFotoY: 35%;          /* sobe a imagem (menos = mais cabeça) */
+      --heroFotoY: 35%;
     }
 
     *{ box-sizing:border-box; }
@@ -75,7 +79,6 @@
       text-rendering: optimizeLegibility;
     }
 
-    /* BG suave SEM matar o degradê */
     body::before{
       content:"";
       position: fixed;
@@ -102,7 +105,6 @@
       padding: 38px 16px 110px;
     }
 
-    /* Reveal (entrada suave) */
     .reveal{
       opacity: 0;
       transform: translateY(10px);
@@ -171,6 +173,7 @@
       justify-content:center;
       overflow:hidden;
       padding: 8px;
+      flex: 0 0 auto;
     }
     .logoMark img{
       width:100%;
@@ -198,19 +201,71 @@
       transform: translateZ(0);
     }
 
+    .heroHead{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    .brandText{
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+      padding-top: 2px;
+      min-width: 0;
+    }
+    .brandText .name{
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+    .brandText .tag{
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.35;
+    }
+
+    .nav{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+      margin-top: 10px;
+    }
+    .nav a{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(43,38,27,.92);
+      color: rgba(242,239,230,.92);
+      background: rgba(255,255,255,.015);
+      font-weight: 800;
+      letter-spacing: .2px;
+      transition: border-color var(--t) ease, transform var(--t) ease;
+      font-size: 13px;
+    }
+    @media (hover:hover){
+      .nav a:hover{
+        transform: translateY(-1px);
+        border-color: rgba(191,151,88,.35);
+      }
+    }
+
     h1{
-      margin: 0 0 10px;
+      margin: 14px 0 10px;
       font-size: 28px;
       line-height: 1.25;
       letter-spacing: .1px;
-      font-weight: 800;
+      font-weight: 900;
     }
     .sub{
       margin: 0 0 14px;
       color: var(--muted);
       line-height: 1.65;
       font-size: 15px;
-      max-width: 62ch;
+      max-width: 70ch;
     }
 
     .btns{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
@@ -226,7 +281,7 @@
       border: 1px solid rgba(43,38,27,.92);
       color: var(--text);
       background: rgba(255,255,255,.02);
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: .2px;
       transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
     }
@@ -237,7 +292,6 @@
       }
     }
 
-    /* CTA MAIS CHAMATIVO */
     a.btn.cta{
       background: linear-gradient(180deg, rgba(191,151,88,.98), rgba(150,112,55,.98));
       color: #1a140a;
@@ -267,6 +321,34 @@
       50%     { box-shadow: 0 18px 48px rgba(191,151,88,.33); }
     }
     a.btn.cta.pulse{ animation: softPulse 2.4s ease-in-out infinite; }
+
+    .chips{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(43,38,27,.92);
+      background: rgba(255,255,255,.015);
+      color: rgba(242,239,230,.92);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .15px;
+    }
+    .chip .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(215,179,122,.72);
+      box-shadow: 0 0 0 3px rgba(215,179,122,.12);
+      flex: 0 0 auto;
+    }
 
     .section-title{
       margin: 0 0 10px;
@@ -319,7 +401,6 @@
     .ico svg{ width:18px; height:18px; display:block; }
     svg{ fill:none; stroke: currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
 
-    /* Desktop refinements */
     @media (min-width: 860px){
       .wrap{ padding: 44px 18px 120px; }
       .card{ padding: 22px; }
@@ -330,7 +411,6 @@
       .grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
     }
 
-    /* CTA fixo */
     .cta-bar{
       position: fixed;
       left:0; right:0; bottom:0;
@@ -366,7 +446,7 @@
       html{ scroll-behavior:auto; }
       .reveal{ opacity:1; transform:none; transition:none; }
       a.btn.cta.pulse{ animation:none; }
-      .card, .mini, a.btn{ transition:none; }
+      .card, .mini, a.btn, .nav a{ transition:none; }
       .card::after{ display:none; }
     }
   </style>
@@ -379,116 +459,191 @@
       <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
       <symbol id="i-plan" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h1"/><path d="M3 12h1"/><path d="M3 18h1"/></symbol>
       <symbol id="i-trending" viewBox="0 0 24 24"><path d="M3 17l7-7 4 4 7-7"/><path d="M14 7h7v7"/></symbol>
+
       <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></symbol>
-      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7h4l2-2h4l2 2h4v12H4z"/><circle cx="12" cy="13" r="3"/></symbol>
-      <symbol id="i-video" viewBox="0 0 24 24"><path d="M14 9l7-4v14l-7-4z"/><rect x="3" y="7" width="11" height="10" rx="2"/></symbol>
+      <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20"/><path d="M12 2a15.3 15.3 0 0 0 0 20"/></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6L12 2z"/><path d="M20 14l.8 2.6L23 17.4l-2.2.8L20 21l-.8-2.8L17 17.4l2.2-.8L20 14z"/></symbol>
+      <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8l-9 5-9-5"/><path d="M3 8l9-5 9 5"/><path d="M21 8v10l-9 5-9-5V8"/></symbol>
     </defs>
   </svg>
 
   <div class="wrap">
 
-    <!-- HERO (SEO + Jornada mobile) -->
-    <header class="card reveal">
-      <div class="topbar">
-        <div class="logoMark" title="Artheal Studio">
-          <img src="logo-branco.png" alt="Logo Artheal Studio" />
+    <!-- HERO -->
+    <header class="card reveal" id="topo">
+      <div class="heroHead">
+        <div class="topbar" style="margin:0; align-items:flex-start;">
+          <div class="logoMark" title="ArtHeal Studio">
+            <img src="logo-branco.png" alt="Logo ArtHeal Studio" />
+          </div>
+
+          <div class="brandText">
+            <div class="name">ArtHeal Studio</div>
+            <div class="tag">Criatividade, clareza e intenção, sem complicar</div>
+          </div>
         </div>
 
         <div class="heroFoto" title="foto.jpg">
-          <img src="foto.jpg" alt="Foto Artheal Studio" loading="eager" decoding="async" />
+          <img src="foto.jpg" alt="Foto ArtHeal Studio" loading="eager" decoding="async" />
         </div>
       </div>
 
-      <h1>Conteúdo criativo com estratégia pra marcas que querem crescer com identidade.</h1>
-      <p class="sub">Social media, fotografia e vídeo com estratégia, direção e propósito.</p>
+      <nav class="nav" aria-label="Navegação do site">
+        <a href="#sobre">Sobre</a>
+        <a href="#como">Como funciona</a>
+        <a href="#porque">Por que a ArtHeal</a>
+        <a href="#servicos">Serviços</a>
+      </nav>
 
-      <!-- CTA principal (topo) -->
+      <h1>Comunicação estratégica, humana e visualmente consciente.</h1>
+      <p class="sub">
+        A ArtHeal ajuda marcas e profissionais a organizarem sua comunicação com clareza, intenção e propósito, indo além do básico e do óbvio.
+      </p>
+
       <div class="btns" aria-label="Ações principais">
         <a class="btn cta pulse"
-           href="https://wa.me/5542999873392?text=Oi%20Artheal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+           href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
            target="_blank" rel="noopener noreferrer">
           Falar no WhatsApp
         </a>
+        <a class="btn" href="servicos.html">Ver serviços</a>
         <a class="btn" href="https://instagram.com/artheal.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a class="btn" href="https://www.behance.net/larissaschulz" target="_blank" rel="noopener noreferrer">Portfólio</a>
       </div>
+
+      <div class="chips" aria-label="Destaques do processo">
+        <span class="chip"><span class="dot"></span>Briefing obrigatório</span>
+        <span class="chip"><span class="dot"></span>Planejamento antes de criar</span>
+        <span class="chip"><span class="dot"></span>1 rodada de ajustes</span>
+      </div>
     </header>
 
-    <!-- Dores -->
+    <!-- Sobre -->
+    <section class="card reveal" id="sobre">
+      <h2 class="section-title">Sobre a ArtHeal</h2>
+      <p class="sub">
+        A ArtHeal é um estúdio criativo estratégico que ajuda marcas a se comunicarem de forma estratégica, humana e visualmente consciente.
+      </p>
+      <p class="sub" style="margin-top:10px">
+        Aqui, o trabalho vai além da estética. Cada projeto começa com entendimento, organização e intenção, para que a comunicação faça sentido e chegue a quem precisa.
+      </p>
+      <p class="sub" style="margin-top:10px; margin-bottom:0">
+        Marketing bem feito não é sobre postar por postar, mas sobre clareza, propósito e conexão real com o público.
+      </p>
+    </section>
+
+    <!-- Dores (bem curto, só pra dar clareza) -->
     <section class="card reveal">
-      <h2 class="section-title">Esse trabalho é pra você se…</h2>
+      <h2 class="section-title">Se hoje a comunicação está assim…</h2>
       <ul class="bullets">
-        <li>não tem tempo pra cuidar das redes como gostaria</li>
-        <li>posta, mas não vê resultado de verdade</li>
-        <li>trava na hora de decidir o que postar</li>
+        <li>o perfil está bagunçado e você não sabe por onde começar</li>
+        <li>você posta, mas não sente que a mensagem está clara</li>
+        <li>falta um caminho simples para decidir o que fazer primeiro</li>
       </ul>
-      <p class="sub" style="margin-top:12px">
-        Se você se identificou com pelo menos um ponto, eu consigo te ajudar a colocar ordem nisso.
+      <p class="sub" style="margin-top:12px; margin-bottom:0">
+        A ideia aqui é organizar, deixar claro e construir uma presença coerente, com intenção.
       </p>
     </section>
 
     <!-- Como funciona -->
-    <section class="card reveal">
+    <section class="card reveal" id="como">
       <h2 class="section-title">Como funciona</h2>
       <div class="grid-3">
         <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-search"/></svg></span>Entender sua marca</div>
-          <p class="sub" style="margin:0">objetivos, momento e direção do que comunicar agora.</p>
+          <div class="row"><span class="ico"><svg><use href="#i-search"/></svg></span>Briefing e análise</div>
+          <p class="sub" style="margin:0">eu entendo seu momento e o que precisa ficar claro na sua comunicação.</p>
         </div>
         <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-plan"/></svg></span>Planejar e produzir</div>
-          <p class="sub" style="margin:0">conteúdo com identidade: posts, fotos e vídeos com propósito.</p>
+          <div class="row"><span class="ico"><svg><use href="#i-plan"/></svg></span>Direção e planejamento</div>
+          <p class="sub" style="margin:0">definimos linha de mensagem e um caminho simples de execução.</p>
         </div>
         <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-trending"/></svg></span>Organizar e evoluir</div>
-          <p class="sub" style="margin:0">constância + análise pra ajustar e melhorar sempre.</p>
+          <div class="row"><span class="ico"><svg><use href="#i-trending"/></svg></span>Execução e evolução</div>
+          <p class="sub" style="margin:0">conteúdo com intenção, ajustes alinhados e melhora constante.</p>
         </div>
       </div>
     </section>
 
-    <!-- Serviços -->
-    <section class="card reveal">
-      <h2 class="section-title">O que eu faço</h2>
-      <p class="sub" style="margin-bottom:12px">
-        Trabalho com <b style="color:var(--text)">pacotes base</b> que podem ser <b style="color:var(--text)">ajustados</b> conforme seu momento e objetivo.
-      </p>
-
+    <!-- Por que a ArtHeal -->
+    <section class="card reveal" id="porque">
+      <h2 class="section-title">Por que a ArtHeal</h2>
       <div class="grid-3">
         <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-grid"/></svg></span>Social Media Estratégico</div>
-          <p class="sub" style="margin:0">planejamento, conteúdo, constância e análise.</p>
+          <div class="row"><span class="ico"><svg><use href="#i-plan"/></svg></span>Organização antes de criação</div>
+          <p class="sub" style="margin:0">a base vem primeiro, para o conteúdo não virar tentativa aleatória.</p>
         </div>
         <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-camera"/></svg></span>Conteúdo Criativo (Foto)</div>
-          <p class="sub" style="margin:0">fotografia alinhada à identidade da marca.</p>
+          <div class="row"><span class="ico"><svg><use href="#i-search"/></svg></span>Clareza de mensagem</div>
+          <p class="sub" style="margin:0">as pessoas entendem rápido o que você faz e por que importa.</p>
         </div>
         <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-video"/></svg></span>Conteúdo Criativo (Vídeo)</div>
-          <p class="sub" style="margin:0">reels e vídeos curtos com direção e estratégia.</p>
+          <div class="row"><span class="ico"><svg><use href="#i-trending"/></svg></span>Intenção, não só estética</div>
+          <p class="sub" style="margin:0">visual bonito, sim, mas com propósito e direção.</p>
         </div>
       </div>
     </section>
 
-    <!-- Sobre (curto, no fim) -->
+    <!-- Serviços (resumo + link para página completa) -->
+    <section class="card reveal" id="servicos">
+      <h2 class="section-title">Serviços, de forma simples</h2>
+      <p class="sub" style="margin-bottom:12px">
+        Esse site é seu primeiro contato comigo. Se quiser ver tudo com calma, tem uma página só de serviços.
+      </p>
+
+      <div class="grid-3" style="margin-bottom: 12px;">
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-grid"/></svg></span>Redes sociais e comunicação</div>
+          <p class="sub" style="margin:0">organização, direção e conteúdo com intenção.</p>
+        </div>
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-pen"/></svg></span>Design para marcas</div>
+          <p class="sub" style="margin:0">peças visuais, padronização e identidade limpa.</p>
+        </div>
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-globe"/></svg></span>Criação de sites</div>
+          <p class="sub" style="margin:0">site simples, moderno e funcional, do jeito que você precisa.</p>
+        </div>
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-spark"/></svg></span>Consultoria de IA</div>
+          <p class="sub" style="margin:0">uso prático de IA no dia a dia do trabalho.</p>
+        </div>
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-box"/></svg></span>Pacotes prontos</div>
+          <p class="sub" style="margin:0">prompts e materiais para autonomia e rapidez.</p>
+        </div>
+      </div>
+
+      <div class="btns">
+        <a class="btn" href="servicos.html">Ver todos os serviços</a>
+        <a class="btn cta"
+           href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+           target="_blank" rel="noopener noreferrer">
+          Me chama no WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- Fechamento curto -->
     <section class="card reveal">
-      <h2 class="section-title">Sobre a Artheal</h2>
-      <p class="sub">
-        A Artheal une <b style="color:var(--text)">arte</b>, <b style="color:var(--text)">estratégia</b> e comunicação com propósito.
-        Você não contrata só posts, contrata <b style="color:var(--text)">clareza</b>, parceria e tranquilidade pra comunicar melhor.
+      <h2 class="section-title">Próximo passo</h2>
+      <p class="sub" style="margin-bottom: 0;">
+        Se você quer organizar sua comunicação ou escolher um serviço pontual, me chama no WhatsApp e eu te digo o melhor próximo passo para o seu momento.
       </p>
 
       <div class="btns" style="margin-top:14px">
         <a class="btn cta"
-           href="https://wa.me/5542999873392?text=Oi%20Artheal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+           href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
            target="_blank" rel="noopener noreferrer">
-          Quero um orçamento no WhatsApp
+          Falar no WhatsApp
         </a>
+        <a class="btn" href="servicos.html">Ir para serviços</a>
       </div>
     </section>
 
   </div>
 
-  <!-- CTA FIXO (mobile converte MUITO) -->
+  <!-- CTA FIXO -->
   <div class="cta-bar" role="complementary" aria-label="Contato rápido">
     <div class="cta-inner">
       <div class="cta-text">
@@ -496,7 +651,7 @@
         Me chama no WhatsApp e eu te digo o melhor próximo passo.
       </div>
       <a class="btn cta"
-         href="https://wa.me/5542999873392?text=Oi%20Artheal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+         href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
          target="_blank" rel="noopener noreferrer">
         WhatsApp
       </a>
@@ -504,7 +659,7 @@
   </div>
 
   <script>
-    // Reveal (entrada suave ao rolar) - leve e profissional
+    // Reveal ao rolar
     const items = document.querySelectorAll('.reveal');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -525,4 +680,3 @@
   </script>
 </body>
 </html>
-

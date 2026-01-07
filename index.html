@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Artheal Studio</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Artheal Studio. social media, fotografia e vídeo com estratégia para marcas que querem crescer com identidade. Chame no WhatsApp." />
+  <meta name="robots" content="index,follow" />
+  <meta name="author" content="Artheal Studio" />
+  <meta name="theme-color" content="#0b0b09" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Artheal Studio" />
+  <meta property="og:description" content="Conteúdo criativo com estratégia: social media, fotografia e vídeo." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (sem emoji) -->
+  <link rel="icon" type="image/png" href="logo-branco.png" />
+
+  <!-- Fonte legível -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Artheal Studio",
+    "areaServed": "BR",
+    "sameAs": [
+      "https://instagram.com/artheal.studio",
+      "https://www.behance.net/larissaschulz"
+    ]
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#0f0f0c;
+      --bg2:#0b0b09;
+      --line:#2b261b;
+      --text:#f2efe6;
+      --muted:#c9c3b5;
+      --gold:#BF9758;
+      --gold2:#d7b37a;
+
+      --radius:22px;
+      --t:240ms;
+      --lift:7px;
+
+      /* Foto (ajuste caso queira depois) */
+      --heroFotoSize: 120px;     /* mobile */
+      --heroFotoSizeDesk: 140px; /* desktop */
+      --heroFotoY: 35%;          /* sobe a imagem (menos = mais cabeça) */
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      min-height:100vh;
+      background:
+        radial-gradient(900px 520px at 18% 10%, rgba(191,151,88,.22), transparent 60%),
+        radial-gradient(840px 480px at 86% 22%, rgba(215,179,122,.12), transparent 55%),
+        radial-gradient(700px 520px at 55% 120%, rgba(191,151,88,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg2), var(--bg));
+      overflow-x:hidden;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* BG suave SEM matar o degradê */
+    body::before{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background: url('bg.jpg') center / cover no-repeat;
+      opacity: .10;
+      filter: saturate(.92) contrast(.95);
+      pointer-events:none;
+      z-index:-2;
+      transform: translateZ(0);
+    }
+    body::after{
+      content:"";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(900px 600px at 20% 0%, rgba(0,0,0,.25), rgba(0,0,0,.55));
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 38px 16px 110px;
+    }
+
+    /* Reveal (entrada suave) */
+    .reveal{
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 420ms ease, transform 420ms ease;
+    }
+    .reveal.is-visible{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    .card{
+      position: relative;
+      background: linear-gradient(180deg, rgba(20,19,15,.96), rgba(16,15,12,.96));
+      border: 1px solid rgba(43,38,27,.92);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      margin-bottom: 14px;
+      overflow:hidden;
+      transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(700px 250px at 10% 0%, rgba(191,151,88,.10), transparent 60%);
+      pointer-events:none;
+      opacity: .9;
+    }
+    .card::after{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(520px 160px at 18% 0%, rgba(215,179,122,.12), transparent 62%);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity var(--t) ease;
+    }
+    .card > *{ position: relative; }
+
+    @media (hover:hover){
+      .card:hover{
+        transform: translateY(calc(-1 * var(--lift)));
+        box-shadow: 0 26px 70px rgba(0,0,0,.45);
+        border-color: rgba(191,151,88,.35);
+      }
+      .card:hover::after{ opacity: 1; }
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .logoMark{
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(191,151,88,.25);
+      background: rgba(255,255,255,.02);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      padding: 8px;
+    }
+    .logoMark img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
+    }
+
+    .heroFoto{
+      width: var(--heroFotoSize);
+      height: var(--heroFotoSize);
+      border-radius: 999px;
+      border: 1px solid rgba(191,151,88,.55);
+      overflow: hidden;
+      background: rgba(255,255,255,.03);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      flex: 0 0 auto;
+    }
+    .heroFoto img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% var(--heroFotoY);
+      display:block;
+      transform: translateZ(0);
+    }
+
+    h1{
+      margin: 0 0 10px;
+      font-size: 28px;
+      line-height: 1.25;
+      letter-spacing: .1px;
+      font-weight: 800;
+    }
+    .sub{
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 15px;
+      max-width: 62ch;
+    }
+
+    .btns{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+
+    a.btn{
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 12px 14px;
+      min-height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(43,38,27,.92);
+      color: var(--text);
+      background: rgba(255,255,255,.02);
+      font-weight: 800;
+      letter-spacing: .2px;
+      transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
+    }
+    @media (hover:hover){
+      a.btn:hover{
+        transform: translateY(-1px);
+        border-color: rgba(191,151,88,.35);
+      }
+    }
+
+    /* CTA MAIS CHAMATIVO */
+    a.btn.cta{
+      background: linear-gradient(180deg, rgba(191,151,88,.98), rgba(150,112,55,.98));
+      color: #1a140a;
+      border-color: rgba(191,151,88,.95);
+      box-shadow: 0 14px 34px rgba(191,151,88,.22);
+      position: relative;
+      overflow:hidden;
+    }
+    a.btn.cta::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+      transform: translateX(-120%);
+      transition: transform 650ms ease;
+      pointer-events:none;
+    }
+    @media (hover:hover){
+      a.btn.cta:hover{
+        transform: translateY(-2px);
+        box-shadow: 0 18px 48px rgba(191,151,88,.33);
+      }
+      a.btn.cta:hover::after{ transform: translateX(120%); }
+    }
+    @keyframes softPulse{
+      0%,100% { box-shadow: 0 14px 34px rgba(191,151,88,.22); }
+      50%     { box-shadow: 0 18px 48px rgba(191,151,88,.33); }
+    }
+    a.btn.cta.pulse{ animation: softPulse 2.4s ease-in-out infinite; }
+
+    .section-title{
+      margin: 0 0 10px;
+      font-size: 17px;
+      color: var(--gold2);
+      letter-spacing: .3px;
+      font-weight: 900;
+    }
+
+    .bullets{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 15px;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .mini{
+      border: 1px solid rgba(43,38,27,.85);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,.02);
+      transition: transform var(--t) ease, border-color var(--t) ease;
+    }
+    @media (hover:hover){
+      .mini:hover{
+        transform: translateY(-2px);
+        border-color: rgba(191,151,88,.30);
+      }
+    }
+
+    .row{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-bottom: 6px;
+      color: var(--text);
+      font-weight: 900;
+    }
+    .ico{
+      width: 18px; height: 18px;
+      color: var(--gold2);
+      flex: 0 0 auto;
+    }
+    .ico svg{ width:18px; height:18px; display:block; }
+    svg{ fill:none; stroke: currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+
+    /* Desktop refinements */
+    @media (min-width: 860px){
+      .wrap{ padding: 44px 18px 120px; }
+      .card{ padding: 22px; }
+      h1{ font-size: 34px; }
+      .sub{ font-size: 16px; }
+      .topbar{ margin-bottom: 14px; }
+      .heroFoto{ width: var(--heroFotoSizeDesk); height: var(--heroFotoSizeDesk); }
+      .grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+    }
+
+    /* CTA fixo */
+    .cta-bar{
+      position: fixed;
+      left:0; right:0; bottom:0;
+      padding: 10px 14px;
+      background: rgba(11,11,9,.82);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(43,38,27,.9);
+      z-index: 999;
+    }
+    .cta-inner{
+      max-width: 980px;
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .cta-text{
+      color: rgba(242,239,230,.92);
+      font-size: 13px;
+      line-height: 1.3;
+    }
+    .cta-text b{ color: var(--gold2); }
+
+    a:focus-visible{
+      outline: 2px solid rgba(215,179,122,.45);
+      outline-offset: 3px;
+      border-radius: 12px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      .reveal{ opacity:1; transform:none; transition:none; }
+      a.btn.cta.pulse{ animation:none; }
+      .card, .mini, a.btn{ transition:none; }
+      .card::after{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Ícones inline -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+      <symbol id="i-plan" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h1"/><path d="M3 12h1"/><path d="M3 18h1"/></symbol>
+      <symbol id="i-trending" viewBox="0 0 24 24"><path d="M3 17l7-7 4 4 7-7"/><path d="M14 7h7v7"/></symbol>
+      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M4 7h4l2-2h4l2 2h4v12H4z"/><circle cx="12" cy="13" r="3"/></symbol>
+      <symbol id="i-video" viewBox="0 0 24 24"><path d="M14 9l7-4v14l-7-4z"/><rect x="3" y="7" width="11" height="10" rx="2"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="wrap">
+
+    <!-- HERO (SEO + Jornada mobile) -->
+    <header class="card reveal">
+      <div class="topbar">
+        <div class="logoMark" title="Artheal Studio">
+          <img src="logo-branco.png" alt="Logo Artheal Studio" />
+        </div>
+
+        <div class="heroFoto" title="foto.jpg">
+          <img src="foto.jpg" alt="Foto Artheal Studio" loading="eager" decoding="async" />
+        </div>
+      </div>
+
+      <h1>Conteúdo criativo com estratégia pra marcas que querem crescer com identidade.</h1>
+      <p class="sub">Social media, fotografia e vídeo com estratégia, direção e propósito.</p>
+
+      <!-- CTA principal (topo) -->
+      <div class="btns" aria-label="Ações principais">
+        <a class="btn cta pulse"
+           href="https://wa.me/5542999873392?text=Oi%20Artheal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+           target="_blank" rel="noopener noreferrer">
+          Falar no WhatsApp
+        </a>
+        <a class="btn" href="https://instagram.com/artheal.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="btn" href="https://www.behance.net/larissaschulz" target="_blank" rel="noopener noreferrer">Portfólio</a>
+      </div>
+    </header>
+
+    <!-- Dores -->
+    <section class="card reveal">
+      <h2 class="section-title">Esse trabalho é pra você se…</h2>
+      <ul class="bullets">
+        <li>não tem tempo pra cuidar das redes como gostaria</li>
+        <li>posta, mas não vê resultado de verdade</li>
+        <li>trava na hora de decidir o que postar</li>
+      </ul>
+      <p class="sub" style="margin-top:12px">
+        Se você se identificou com pelo menos um ponto, eu consigo te ajudar a colocar ordem nisso.
+      </p>
+    </section>
+
+    <!-- Como funciona -->
+    <section class="card reveal">
+      <h2 class="section-title">Como funciona</h2>
+      <div class="grid-3">
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-search"/></svg></span>Entender sua marca</div>
+          <p class="sub" style="margin:0">objetivos, momento e direção do que comunicar agora.</p>
+        </div>
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-plan"/></svg></span>Planejar e produzir</div>
+          <p class="sub" style="margin:0">conteúdo com identidade: posts, fotos e vídeos com propósito.</p>
+        </div>
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-trending"/></svg></span>Organizar e evoluir</div>
+          <p class="sub" style="margin:0">constância + análise pra ajustar e melhorar sempre.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="card reveal">
+      <h2 class="section-title">O que eu faço</h2>
+      <p class="sub" style="margin-bottom:12px">
+        Trabalho com <b style="color:var(--text)">pacotes base</b> que podem ser <b style="color:var(--text)">ajustados</b> conforme seu momento e objetivo.
+      </p>
+
+      <div class="grid-3">
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-grid"/></svg></span>Social Media Estratégico</div>
+          <p class="sub" style="margin:0">planejamento, conteúdo, constância e análise.</p>
+        </div>
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-camera"/></svg></span>Conteúdo Criativo (Foto)</div>
+          <p class="sub" style="margin:0">fotografia alinhada à identidade da marca.</p>
+        </div>
+        <div class="mini">
+          <div class="row"><span class="ico"><svg><use href="#i-video"/></svg></span>Conteúdo Criativo (Vídeo)</div>
+          <p class="sub" style="margin:0">reels e vídeos curtos com direção e estratégia.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sobre (curto, no fim) -->
+    <section class="card reveal">
+      <h2 class="section-title">Sobre a Artheal</h2>
+      <p class="sub">
+        A Artheal une <b style="color:var(--text)">arte</b>, <b style="color:var(--text)">estratégia</b> e comunicação com propósito.
+        Você não contrata só posts, contrata <b style="color:var(--text)">clareza</b>, parceria e tranquilidade pra comunicar melhor.
+      </p>
+
+      <div class="btns" style="margin-top:14px">
+        <a class="btn cta"
+           href="https://wa.me/5542999873392?text=Oi%20Artheal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+           target="_blank" rel="noopener noreferrer">
+          Quero um orçamento no WhatsApp
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CTA FIXO (mobile converte MUITO) -->
+  <div class="cta-bar" role="complementary" aria-label="Contato rápido">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <b>Quer um caminho claro pro seu momento?</b><br>
+        Me chama no WhatsApp e eu te digo o melhor próximo passo.
+      </div>
+      <a class="btn cta"
+         href="https://wa.me/5542999873392?text=Oi%20Artheal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+         target="_blank" rel="noopener noreferrer">
+        WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Reveal (entrada suave ao rolar) - leve e profissional
+    const items = document.querySelectorAll('.reveal');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion) {
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.classList.add('is-visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      items.forEach(el=> io.observe(el));
+    } else {
+      items.forEach(el=> el.classList.add('is-visible'));
+    }
+  </script>
+</body>
+</html>

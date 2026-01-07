@@ -8,7 +8,7 @@
   <title>ArtHeal Studio | Comunicação estratégica, humana e visualmente consciente</title>
 
   <!-- SEO -->
-  <meta name="description" content="A ArtHeal ajuda marcas e profissionais a organizarem sua comunicação com clareza, intenção e propósito. Redes sociais, design, sites e consultoria prática de IA." />
+  <meta name="description" content="A ArtHeal ajuda marcas e profissionais a organizarem sua comunicação com clareza, intenção e propósito. Redes sociais, design, sites e consultoria prática de IA. Chame no WhatsApp." />
   <meta name="robots" content="index,follow" />
   <meta name="author" content="ArtHeal Studio" />
   <meta name="theme-color" content="#0b0b09" />
@@ -52,9 +52,6 @@
       --muted:#c9c3b5;
       --gold:#BF9758;
       --gold2:#d7b37a;
-
-      --cta1:#1fa463; /* verde */
-      --cta2:#158a52;
 
       --radius:22px;
       --t:240ms;
@@ -295,12 +292,11 @@
       }
     }
 
-    /* CTA VERDE (estilo Finch) */
     a.btn.cta{
-      background: linear-gradient(180deg, rgba(31,164,99,.98), rgba(21,138,82,.98));
-      color: #071a10;
-      border-color: rgba(31,164,99,.95);
-      box-shadow: 0 14px 34px rgba(31,164,99,.22);
+      background: linear-gradient(180deg, rgba(191,151,88,.98), rgba(150,112,55,.98));
+      color: #1a140a;
+      border-color: rgba(191,151,88,.95);
+      box-shadow: 0 14px 34px rgba(191,151,88,.22);
       position: relative;
       overflow:hidden;
     }
@@ -316,15 +312,43 @@
     @media (hover:hover){
       a.btn.cta:hover{
         transform: translateY(-2px);
-        box-shadow: 0 18px 48px rgba(31,164,99,.33);
+        box-shadow: 0 18px 48px rgba(191,151,88,.33);
       }
       a.btn.cta:hover::after{ transform: translateX(120%); }
     }
     @keyframes softPulse{
-      0%,100% { box-shadow: 0 14px 34px rgba(31,164,99,.22); }
-      50%     { box-shadow: 0 18px 48px rgba(31,164,99,.33); }
+      0%,100% { box-shadow: 0 14px 34px rgba(191,151,88,.22); }
+      50%     { box-shadow: 0 18px 48px rgba(191,151,88,.33); }
     }
     a.btn.cta.pulse{ animation: softPulse 2.4s ease-in-out infinite; }
+
+    .chips{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(43,38,27,.92);
+      background: rgba(255,255,255,.015);
+      color: rgba(242,239,230,.92);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: .15px;
+    }
+    .chip .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(215,179,122,.72);
+      box-shadow: 0 0 0 3px rgba(215,179,122,.12);
+      flex: 0 0 auto;
+    }
 
     .section-title{
       margin: 0 0 10px;
@@ -387,6 +411,31 @@
       .grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
     }
 
+    .cta-bar{
+      position: fixed;
+      left:0; right:0; bottom:0;
+      padding: 10px 14px;
+      background: rgba(11,11,9,.82);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(43,38,27,.9);
+      z-index: 999;
+    }
+    .cta-inner{
+      max-width: 980px;
+      margin: 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .cta-text{
+      color: rgba(242,239,230,.92);
+      font-size: 13px;
+      line-height: 1.3;
+    }
+    .cta-text b{ color: var(--gold2); }
+
     a:focus-visible{
       outline: 2px solid rgba(215,179,122,.45);
       outline-offset: 3px;
@@ -404,15 +453,12 @@
 </head>
 
 <body>
-  <!-- Ícones inline (reais / elegantes) -->
+  <!-- Ícones inline -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
       <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
       <symbol id="i-plan" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h1"/><path d="M3 12h1"/><path d="M3 18h1"/></symbol>
       <symbol id="i-trending" viewBox="0 0 24 24"><path d="M3 17l7-7 4 4 7-7"/><path d="M14 7h7v7"/></symbol>
-
-      <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></symbol>
-      <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/></symbol>
 
       <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></symbol>
       <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></symbol>
@@ -455,14 +501,21 @@
         A ArtHeal ajuda marcas e profissionais a organizarem sua comunicação com clareza, intenção e propósito, indo além do básico e do óbvio.
       </p>
 
-      <!-- CTA reduzido (sem poluição) -->
       <div class="btns" aria-label="Ações principais">
         <a class="btn cta pulse"
            href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
            target="_blank" rel="noopener noreferrer">
-          Chamar no WhatsApp
+          Falar no WhatsApp
         </a>
         <a class="btn" href="servicos.html">Ver serviços</a>
+        <a class="btn" href="https://instagram.com/artheal.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a class="btn" href="https://www.behance.net/larissaschulz" target="_blank" rel="noopener noreferrer">Portfólio</a>
+      </div>
+
+      <div class="chips" aria-label="Destaques do processo">
+        <span class="chip"><span class="dot"></span>Briefing obrigatório</span>
+        <span class="chip"><span class="dot"></span>Planejamento antes de criar</span>
+        <span class="chip"><span class="dot"></span>1 rodada de ajustes</span>
       </div>
     </header>
 
@@ -480,16 +533,16 @@
       </p>
     </section>
 
-    <!-- Dores (igual você pediu) -->
+    <!-- Dores (bem curto, só pra dar clareza) -->
     <section class="card reveal">
-      <h2 class="section-title">Esse trabalho é pra você se…</h2>
+      <h2 class="section-title">Se hoje a comunicação está assim…</h2>
       <ul class="bullets">
-        <li>não tem tempo pra cuidar da comunicação como gostaria</li>
-        <li>posta, mas não sente resultado de verdade</li>
-        <li>trava na hora de decidir o que postar ou por onde começar</li>
+        <li>o perfil está bagunçado e você não sabe por onde começar</li>
+        <li>você posta, mas não sente que a mensagem está clara</li>
+        <li>falta um caminho simples para decidir o que fazer primeiro</li>
       </ul>
       <p class="sub" style="margin-top:12px; margin-bottom:0">
-        Se você se identificou com pelo menos um ponto, dá pra organizar isso.
+        A ideia aqui é organizar, deixar claro e construir uma presença coerente, com intenção.
       </p>
     </section>
 
@@ -512,30 +565,30 @@
       </div>
     </section>
 
-    <!-- Por que a ArtHeal (ícones NÃO repetidos) -->
+    <!-- Por que a ArtHeal -->
     <section class="card reveal" id="porque">
       <h2 class="section-title">Por que a ArtHeal</h2>
       <div class="grid-3">
         <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-layers"/></svg></span>Organização antes de criação</div>
+          <div class="row"><span class="ico"><svg><use href="#i-plan"/></svg></span>Organização antes de criação</div>
           <p class="sub" style="margin:0">a base vem primeiro, para o conteúdo não virar tentativa aleatória.</p>
         </div>
         <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-message"/></svg></span>Clareza de mensagem</div>
+          <div class="row"><span class="ico"><svg><use href="#i-search"/></svg></span>Clareza de mensagem</div>
           <p class="sub" style="margin:0">as pessoas entendem rápido o que você faz e por que importa.</p>
         </div>
         <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-spark"/></svg></span>Intenção, não só estética</div>
+          <div class="row"><span class="ico"><svg><use href="#i-trending"/></svg></span>Intenção, não só estética</div>
           <p class="sub" style="margin:0">visual bonito, sim, mas com propósito e direção.</p>
         </div>
       </div>
     </section>
 
-    <!-- Serviços (sem repetição e com 1 CTA só) -->
+    <!-- Serviços (resumo + link para página completa) -->
     <section class="card reveal" id="servicos">
       <h2 class="section-title">Serviços, de forma simples</h2>
       <p class="sub" style="margin-bottom:12px">
-        Se quiser ver tudo com calma, tem uma página só de serviços.
+        Esse site é seu primeiro contato comigo. Se quiser ver tudo com calma, tem uma página só de serviços.
       </p>
 
       <div class="grid-3" style="margin-bottom: 12px;">
@@ -562,25 +615,47 @@
       </div>
 
       <div class="btns">
-        <a class="btn cta" href="servicos.html">Ver todos os serviços</a>
-      </div>
-    </section>
-
-    <!-- CTA final (opção 2) -->
-    <section class="card reveal">
-      <h2 class="section-title">Comunicação não precisa ser confusa.</h2>
-      <p class="sub" style="margin-bottom:12px">
-        Se quiser clareza antes de decidir, me chama no WhatsApp.
-      </p>
-      <div class="btns">
+        <a class="btn" href="servicos.html">Ver todos os serviços</a>
         <a class="btn cta"
            href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
            target="_blank" rel="noopener noreferrer">
-          Chamar no WhatsApp
+          Me chama no WhatsApp
         </a>
       </div>
     </section>
 
+    <!-- Fechamento curto -->
+    <section class="card reveal">
+      <h2 class="section-title">Próximo passo</h2>
+      <p class="sub" style="margin-bottom: 0;">
+        Se você quer organizar sua comunicação ou escolher um serviço pontual, me chama no WhatsApp e eu te digo o melhor próximo passo para o seu momento.
+      </p>
+
+      <div class="btns" style="margin-top:14px">
+        <a class="btn cta"
+           href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+           target="_blank" rel="noopener noreferrer">
+          Falar no WhatsApp
+        </a>
+        <a class="btn" href="servicos.html">Ir para serviços</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- CTA FIXO -->
+  <div class="cta-bar" role="complementary" aria-label="Contato rápido">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <b>Quer um caminho claro pro seu momento?</b><br>
+        Me chama no WhatsApp e eu te digo o melhor próximo passo.
+      </div>
+      <a class="btn cta"
+         href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+         target="_blank" rel="noopener noreferrer">
+        WhatsApp
+      </a>
+    </div>
   </div>
 
   <script>

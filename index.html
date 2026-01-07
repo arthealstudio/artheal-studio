@@ -449,6 +449,95 @@
       .card, .mini, a.btn, .nav a{ transition:none; }
       .card::after{ display:none; }
     }
+  
+/* WhatsApp CTA flutuante (discreto, fora do conteúdo) */
+.wa-side{
+  position: fixed;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 999;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  font-weight: 900;
+  letter-spacing: .3px;
+  color: rgba(245,255,250,.98);
+
+  background:
+    radial-gradient(140% 120% at 85% 20%, rgba(255,255,255,.18), transparent 45%),
+    linear-gradient(90deg, rgba(12,74,43,.98), rgba(31,164,99,.98));
+
+  border: 1px solid rgba(175,255,215,.32);
+  box-shadow:
+    0 16px 44px rgba(31,164,99,.22),
+    0 2px 0 rgba(255,255,255,.05) inset,
+    0 0 0 1px rgba(0,0,0,.25) inset;
+  overflow:hidden;
+}
+.wa-side::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image: radial-gradient(rgba(255,255,255,.22) 1px, transparent 1px);
+  background-size: 6px 6px;
+  opacity: .28;
+  mix-blend-mode: overlay;
+  -webkit-mask-image: radial-gradient(120% 120% at 70% 40%, #000 0%, rgba(0,0,0,.65) 55%, transparent 78%);
+          mask-image: radial-gradient(120% 120% at 70% 40%, #000 0%, rgba(0,0,0,.65) 55%, transparent 78%);
+  pointer-events:none;
+}
+.wa-side::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+  transform: translateX(-120%);
+  transition: transform 650ms ease;
+  pointer-events:none;
+}
+.wa-side .wa-ico{
+  width: 18px; height: 18px;
+  display:inline-block;
+}
+@media (hover:hover){
+  .wa-side:hover{ transform: translateY(-50%) translateY(-2px); }
+  .wa-side:hover::after{ transform: translateX(120%); }
+}
+
+/* Mobile: vira bolinha no canto */
+.wa-float{
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 999;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-decoration:none;
+
+  background:
+    radial-gradient(140% 120% at 85% 20%, rgba(255,255,255,.18), transparent 45%),
+    linear-gradient(90deg, rgba(12,74,43,.98), rgba(31,164,99,.98));
+
+  border: 1px solid rgba(175,255,215,.32);
+  box-shadow:
+    0 16px 44px rgba(31,164,99,.22),
+    0 2px 0 rgba(255,255,255,.05) inset,
+    0 0 0 1px rgba(0,0,0,.25) inset;
+}
+.wa-float svg{ width: 22px; height: 22px; }
+@media (max-width: 740px){
+  .wa-side{ display:none; }
+  .wa-float{ display:flex; }
+}
+
   </style>
 </head>
 
@@ -489,12 +578,11 @@
         </div>
       </div>
 
-      <nav class="nav" aria-label="Navegação do site">
-        <a href="#sobre">Sobre</a>
-        <a href="#como">Como funciona</a>
-        <a href="#porque">Por que a ArtHeal</a>
-        <a href="#servicos">Serviços</a>
-      </nav>
+      <nav class="nav" aria-label="Navegação">
+  <a href="#sobre">Sobre</a>
+  <a href="#mudancas">O que muda</a>
+  <a href="#oferta">Ver oferta</a>
+</nav>
 
       <h1>Comunicação estratégica, humana e visualmente consciente.</h1>
       <p class="sub">
@@ -502,21 +590,11 @@
       </p>
 
       <div class="btns" aria-label="Ações principais">
-        <a class="btn cta pulse"
-           href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
-           target="_blank" rel="noopener noreferrer">
-          Falar no WhatsApp
-        </a>
-        <a class="btn" href="servicos.html">Ver serviços</a>
-        <a class="btn" href="https://instagram.com/artheal.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
-        <a class="btn" href="https://www.behance.net/larissaschulz" target="_blank" rel="noopener noreferrer">Portfólio</a>
-      </div>
+  <a class="btn" href="https://instagram.com/artheal.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
+  <a class="btn" href="https://www.behance.net/larissaschulz" target="_blank" rel="noopener noreferrer">Portfólio</a>
+  <a class="btn cta" href="servicos.html">Ver serviços</a>
+</div>
 
-      <div class="chips" aria-label="Destaques do processo">
-        <span class="chip"><span class="dot"></span>Briefing obrigatório</span>
-        <span class="chip"><span class="dot"></span>Planejamento antes de criar</span>
-        <span class="chip"><span class="dot"></span>1 rodada de ajustes</span>
-      </div>
     </header>
 
     <!-- Sobre -->
@@ -533,113 +611,47 @@
       </p>
     </section>
 
-    <!-- Dores (bem curto, só pra dar clareza) -->
-    <section class="card reveal">
-      <h2 class="section-title">Se hoje a comunicação está assim…</h2>
-      <ul class="bullets">
-        <li>o perfil está bagunçado e você não sabe por onde começar</li>
-        <li>você posta, mas não sente que a mensagem está clara</li>
-        <li>falta um caminho simples para decidir o que fazer primeiro</li>
-      </ul>
-      <p class="sub" style="margin-top:12px; margin-bottom:0">
-        A ideia aqui é organizar, deixar claro e construir uma presença coerente, com intenção.
-      </p>
-    </section>
+    <!-- Bloco de dor -->
+<section class="card reveal" id="dor">
+  <h2 class="section-title">Esse trabalho é pra você se…</h2>
+  <ul class="bullets">
+    <li>não tem tempo pra postar, organizar conteúdo ou manter o perfil ativo</li>
+    <li>posta, mas não vê resultado de verdade</li>
+    <li>trava na hora de decidir o que postar ou por onde começar</li>
+  </ul>
+  <p class="sub" style="margin-top:12px; margin-bottom:0">
+    Se você se identificou com pelo menos um ponto, dá pra organizar isso.
+  </p>
+</section>
 
-    <!-- Como funciona -->
-    <section class="card reveal" id="como">
-      <h2 class="section-title">Como funciona</h2>
-      <div class="grid-3">
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-search"/></svg></span>Briefing e análise</div>
-          <p class="sub" style="margin:0">eu entendo seu momento e o que precisa ficar claro na sua comunicação.</p>
-        </div>
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-plan"/></svg></span>Direção e planejamento</div>
-          <p class="sub" style="margin:0">definimos linha de mensagem e um caminho simples de execução.</p>
-        </div>
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-trending"/></svg></span>Execução e evolução</div>
-          <p class="sub" style="margin:0">conteúdo com intenção, ajustes alinhados e melhora constante.</p>
-        </div>
-      </div>
-    </section>
 
-    <!-- Por que a ArtHeal -->
-    <section class="card reveal" id="porque">
-      <h2 class="section-title">Por que a ArtHeal</h2>
-      <div class="grid-3">
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-plan"/></svg></span>Organização antes de criação</div>
-          <p class="sub" style="margin:0">a base vem primeiro, para o conteúdo não virar tentativa aleatória.</p>
-        </div>
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-search"/></svg></span>Clareza de mensagem</div>
-          <p class="sub" style="margin:0">as pessoas entendem rápido o que você faz e por que importa.</p>
-        </div>
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-trending"/></svg></span>Intenção, não só estética</div>
-          <p class="sub" style="margin:0">visual bonito, sim, mas com propósito e direção.</p>
-        </div>
-      </div>
-    </section>
+    <!-- O que muda -->
+<section class="card reveal" id="mudancas">
+  <h2 class="section-title">O que muda quando a comunicação é bem feita</h2>
+  <ul class="bullets">
+    <li>as pessoas entendem mais rápido o que você faz</li>
+    <li>sua marca transmite mais confiança</li>
+    <li>postar deixa de ser um peso</li>
+    <li>a comunicação começa a trabalhar a seu favor</li>
+  </ul>
+  <p class="sub" style="margin-top:12px; margin-bottom:0">
+    Não é sobre fazer mais. É sobre fazer melhor.
+  </p>
+</section>
 
-    <!-- Serviços (resumo + link para página completa) -->
-    <section class="card reveal" id="servicos">
-      <h2 class="section-title">Serviços, de forma simples</h2>
-      <p class="sub" style="margin-bottom:12px">
-        Esse site é seu primeiro contato comigo. Se quiser ver tudo com calma, tem uma página só de serviços.
-      </p>
 
-      <div class="grid-3" style="margin-bottom: 12px;">
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-grid"/></svg></span>Redes sociais e comunicação</div>
-          <p class="sub" style="margin:0">organização, direção e conteúdo com intenção.</p>
-        </div>
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-pen"/></svg></span>Design para marcas</div>
-          <p class="sub" style="margin:0">peças visuais, padronização e identidade limpa.</p>
-        </div>
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-globe"/></svg></span>Criação de sites</div>
-          <p class="sub" style="margin:0">site simples, moderno e funcional, do jeito que você precisa.</p>
-        </div>
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-spark"/></svg></span>Consultoria de IA</div>
-          <p class="sub" style="margin:0">uso prático de IA no dia a dia do trabalho.</p>
-        </div>
-        <div class="mini">
-          <div class="row"><span class="ico"><svg><use href="#i-box"/></svg></span>Pacotes prontos</div>
-          <p class="sub" style="margin:0">prompts e materiais para autonomia e rapidez.</p>
-        </div>
-      </div>
+    <!-- Convite para ver a oferta -->
+<section class="card reveal" id="oferta">
+  <h2 class="section-title">Antes de tomar uma decisão, veja o que eu posso te oferecer</h2>
+  <p class="sub" style="margin-bottom:12px;">
+    Cada marca está em um momento diferente.
+    Na página de serviços, você encontra as formas como eu ajudo a organizar a comunicação, dar direção e criar mensagens que fazem sentido, inclusive na hora de vender.
+  </p>
+  <div class="btns">
+    <a class="btn cta" href="servicos.html">Ver serviços</a>
+  </div>
+</section>
 
-      <div class="btns">
-        <a class="btn" href="servicos.html">Ver todos os serviços</a>
-        <a class="btn cta"
-           href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
-           target="_blank" rel="noopener noreferrer">
-          Me chama no WhatsApp
-        </a>
-      </div>
-    </section>
-
-    <!-- Fechamento curto -->
-    <section class="card reveal">
-      <h2 class="section-title">Próximo passo</h2>
-      <p class="sub" style="margin-bottom: 0;">
-        Se você quer organizar sua comunicação ou escolher um serviço pontual, me chama no WhatsApp e eu te digo o melhor próximo passo para o seu momento.
-      </p>
-
-      <div class="btns" style="margin-top:14px">
-        <a class="btn cta"
-           href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
-           target="_blank" rel="noopener noreferrer">
-          Falar no WhatsApp
-        </a>
-        <a class="btn" href="servicos.html">Ir para serviços</a>
-      </div>
-    </section>
 
   </div>
 
@@ -678,5 +690,18 @@
       items.forEach(el=> el.classList.add('is-visible'));
     }
   </script>
+
+<!-- WhatsApp (atalho discreto) -->
+<a class="wa-side" href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+   target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+  <span class="wa-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h10a4 4 0 0 1 4 4v7a4 4 0 0 1-4 4H10l-5 3V7a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 9.5h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8.5 13h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+  WhatsApp
+</a>
+
+<a class="wa-float" href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
+   target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h10a4 4 0 0 1 4 4v7a4 4 0 0 1-4 4H10l-5 3V7a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 9.5h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8.5 13h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+</a>
+
 </body>
 </html>

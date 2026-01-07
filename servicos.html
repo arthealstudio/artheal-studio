@@ -3,519 +3,558 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Serviços | ArtHeal Studio</title>
-
-  <meta name="description" content="Veja todos os serviços da ArtHeal: redes sociais e comunicação, design para marcas, criação de sites, consultoria prática de IA e pacotes prontos." />
+  <meta name="description" content="Veja todos os serviços da ArtHeal: redes sociais, design, fotografia, vídeo, sites, consultoria de IA e pacotes prontos." />
   <meta name="robots" content="index,follow" />
   <meta name="author" content="ArtHeal Studio" />
-  <meta name="theme-color" content="#0b0b09" />
   <link rel="canonical" href="https://arthealstudio.github.io/artheal-studio/servicos.html" />
-
-  <meta property="og:title" content="Serviços | ArtHeal Studio" />
-  <meta property="og:description" content="Opções de serviços, de forma simples e clara, para você escolher o que faz sentido no seu momento." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="foto.jpg" />
-
   <link rel="icon" type="image/png" href="logo-branco.png" />
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+  
   <style>
-    :root{
-      --bg:#0f0f0c;
-      --bg2:#0b0b09;
-      --line:#2b261b;
-      --text:#f2efe6;
-      --muted:#c9c3b5;
-      --gold:#BF9758;
-      --gold2:#d7b37a;
-      --radius:22px;
-      --t:240ms;
-      --lift:7px;
+    :root {
+      --bg: #0f0f0c;
+      --bg2: #0b0b09;
+      --line: #2b261b;
+      --text: #f2efe6;
+      --muted: #c9c3b5;
+      --gold: #BF9758;
+      --gold2: #d7b37a;
+      --radius: 22px;
+      --transition: 240ms;
     }
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
-    body{
-      margin:0;
-      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: "Inter", sans-serif;
       color: var(--text);
-      min-height:100vh;
-      background:
-        radial-gradient(900px 520px at 18% 10%, rgba(191,151,88,.22), transparent 60%),
-        radial-gradient(840px 480px at 86% 22%, rgba(215,179,122,.12), transparent 55%),
-        radial-gradient(700px 520px at 55% 120%, rgba(191,151,88,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg2), var(--bg));
-      overflow-x:hidden;
+      background: linear-gradient(180deg, var(--bg2), var(--bg));
+      padding: 20px;
       text-rendering: optimizeLegibility;
     }
 
-    body::before{
-      content:"";
+    body::before {
+      content: "";
       position: fixed;
       inset: 0;
-      background: url('bg.jpg') center / cover no-repeat;
-      opacity: .10;
-      filter: saturate(.92) contrast(.95);
-      pointer-events:none;
-      z-index:-2;
-      transform: translateZ(0);
+      background: 
+        radial-gradient(900px 520px at 18% 10%, rgba(191,151,88,.22), transparent 60%),
+        radial-gradient(840px 480px at 86% 22%, rgba(215,179,122,.12), transparent 55%),
+        radial-gradient(700px 520px at 55% 120%, rgba(191,151,88,.10), transparent 60%);
+      pointer-events: none;
+      z-index: -1;
     }
-    body::after{
-      content:"";
+
+    body::after {
+      content: "";
       position: fixed;
       inset: 0;
       background: radial-gradient(900px 600px at 20% 0%, rgba(0,0,0,.25), rgba(0,0,0,.55));
-      pointer-events:none;
-      z-index:-1;
+      pointer-events: none;
+      z-index: -2;
     }
 
-    .wrap{
-      max-width: 980px;
+    .container {
+      max-width: 1000px;
       margin: 0 auto;
-      padding: 38px 16px 60px;
     }
 
-    .card{
-      position: relative;
-      background: linear-gradient(180deg, rgba(20,19,15,.96), rgba(16,15,12,.96));
-      border: 1px solid rgba(43,38,27,.92);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.35);
-      margin-bottom: 14px;
-      overflow:hidden;
-      transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
-    }
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(700px 250px at 10% 0%, rgba(191,151,88,.10), transparent 60%);
-      pointer-events:none;
-      opacity: .9;
-    }
-    .card::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: radial-gradient(520px 160px at 18% 0%, rgba(215,179,122,.12), transparent 62%);
-      opacity: 0;
-      pointer-events:none;
-      transition: opacity var(--t) ease;
-    }
-    .card > *{ position: relative; }
-
-    @media (hover:hover){
-      .card:hover{
-        transform: translateY(calc(-1 * var(--lift)));
-        box-shadow: 0 26px 70px rgba(0,0,0,.45);
-        border-color: rgba(191,151,88,.35);
-      }
-      .card:hover::after{ opacity: 1; }
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .logoMark{
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      border: 1px solid rgba(191,151,88,.25);
-      background: rgba(255,255,255,.02);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      padding: 8px;
-    }
-    .logoMark img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
-    }
-
-    .nav{
-      display:flex;
-      gap: 8px;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      margin-bottom: 30px;
       flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-    .nav a{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(43,38,27,.92);
-      color: rgba(242,239,230,.92);
-      background: rgba(255,255,255,.015);
-      font-weight: 900;
-      letter-spacing: .2px;
-      transition: border-color var(--t) ease, transform var(--t) ease;
-      font-size: 13px;
-    }
-    @media (hover:hover){
-      .nav a:hover{
-        transform: translateY(-1px);
-        border-color: rgba(191,151,88,.35);
-      }
+      gap: 20px;
     }
 
-    h1{
-      margin: 8px 0 10px;
-      font-size: 28px;
-      line-height: 1.25;
-      letter-spacing: .1px;
-      font-weight: 900;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .sub{
-      margin: 0 0 14px;
+
+    .logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      border: 1px solid rgba(191,151,88,.3);
+      padding: 8px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .logo-text {
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(43,38,27,.7);
+      color: var(--text);
+      background: rgba(255,255,255,.02);
+      font-weight: 700;
+      font-size: 14px;
+      transition: all var(--transition) ease;
+    }
+
+    .nav a:hover {
+      border-color: rgba(191,151,88,.4);
+      transform: translateY(-2px);
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 36px);
+      line-height: 1.2;
+      font-weight: 900;
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #f2efe6 0%, #d7b37a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .intro {
       color: var(--muted);
-      line-height: 1.65;
-      font-size: 15px;
-      max-width: 76ch;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+      max-width: 700px;
     }
 
-    .section-title{
+    .section-title {
       margin: 0 0 10px;
-      font-size: 17px;
+      font-size: 20px;
       color: var(--gold2);
       letter-spacing: .3px;
       font-weight: 900;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
     }
 
-    .mini{
-      border: 1px solid rgba(43,38,27,.85);
-      border-radius: 18px;
-      padding: 16px;
-      background: rgba(255,255,255,.02);
-      transition: transform var(--t) ease, border-color var(--t) ease;
-    }
-    @media (hover:hover){
-      .mini:hover{
-        transform: translateY(-2px);
-        border-color: rgba(191,151,88,.30);
-      }
+    /* CARDS DE SERVIÇOS COM DEGRADÊ */
+    .service-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid rgba(191,151,88,.20);
+      background: linear-gradient(180deg, rgba(18,17,14,.96), rgba(12,11,9,.96));
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      transition: transform var(--transition) ease, box-shadow var(--transition) ease, border-color var(--transition) ease;
+      padding: 25px;
     }
 
-    .titleRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      margin-bottom: 8px;
+    .service-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(110% 75% at 50% 108%, rgba(191,151,88,.55) 0%, rgba(215,179,122,.28) 34%, transparent 64%);
+      opacity: .80;
+      pointer-events: none;
     }
-    .titleRow b{ font-weight: 900; }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(43,38,27,.92);
-      background: rgba(255,255,255,.015);
-      color: rgba(242,239,230,.92);
-      font-weight: 800;
-      font-size: 12.5px;
-      letter-spacing: .15px;
-      flex: 0 0 auto;
+
+    .service-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.14) 1px, transparent 1px);
+      background-size: 7px 7px;
+      opacity: .22;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      mask-image: radial-gradient(120% 90% at 50% 65%, #000 0%, rgba(0,0,0,.65) 55%, transparent 78%);
+    }
+
+    .service-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(215,179,122,.40);
+      box-shadow: 0 26px 74px rgba(0,0,0,.48), 0 0 0 1px rgba(191,151,88,.10) inset;
+    }
+
+    .service-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .service-title {
+      font-weight: 900;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .service-tag {
+      background: rgba(191,151,88,.15);
+      color: var(--gold2);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
       white-space: nowrap;
     }
 
-    ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
+    .service-desc {
       color: var(--muted);
-      line-height: 1.85;
+      line-height: 1.6;
+      margin-bottom: 15px;
       font-size: 15px;
     }
 
-    .btns{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-    a.btn{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 12px 14px;
-      min-height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(43,38,27,.92);
-      color: var(--text);
-      background: rgba(255,255,255,.02);
-      font-weight: 900;
-      letter-spacing: .2px;
-      transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
+    .service-list {
+      color: var(--muted);
+      padding-left: 20px;
+      line-height: 1.85;
+      font-size: 14px;
     }
-    @media (hover:hover){
-      a.btn:hover{
-        transform: translateY(-1px);
-        border-color: rgba(191,151,88,.35);
+
+    .service-list li {
+      margin-bottom: 5px;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 40px 20px;
+      margin: 50px 0;
+      background: rgba(20,19,15,.5);
+      border-radius: var(--radius);
+      border: 1px solid rgba(43,38,27,.5);
+    }
+
+    .cta-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--gold2);
+      margin-bottom: 15px;
+    }
+
+    .cta-text {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 25px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, rgba(191,151,88,.98), rgba(150,112,55,.98));
+      color: #1a140a;
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 12px;
+      border: 1px solid rgba(191,151,88,.95);
+      box-shadow: 0 10px 30px rgba(191,151,88,.2);
+      transition: all var(--transition) ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(191,151,88,.3);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      transition: color var(--transition) ease;
+    }
+
+    .back-link:hover {
+      color: var(--gold2);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(37,211,102,.3);
+      z-index: 1000;
+      text-decoration: none;
+      transition: all var(--transition) ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(37,211,102,.4);
+    }
+
+    .whatsapp-float svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
+    }
+
+    /* DIVISOR VISUAL */
+    .visual-divider {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 60px 0;
+      position: relative;
+    }
+
+    .divider-line {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(191,151,88,.3), transparent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .divider-line::after {
+      content: "";
+      position: absolute;
+      left: -100%;
+      width: 30%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(191,151,88,.8), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      to { left: 100%; }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .intro {
+        font-size: 16px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+      }
+
+      .whatsapp-float svg {
+        width: 24px;
+        height: 24px;
       }
     }
-    a.btn.cta{
-      background: linear-gradient(180deg, rgba(191,151,88,.98), rgba(150,112,55,.98));
-      color: #1a140a;
-      border-color: rgba(191,151,88,.95);
-      box-shadow: 0 14px 34px rgba(191,151,88,.22);
-      position: relative;
-      overflow:hidden;
+
+    /* ANIMAÇÕES DE ENTRADA */
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    @media (min-width: 860px){
-      .wrap{ padding: 44px 18px 70px; }
-      .card{ padding: 22px; }
-      h1{ font-size: 34px; }
-      .sub{ font-size: 16px; }
-      .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    [data-animate].visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-  
-/* Cards de serviços: degradê + textura (paleta ArtHeal) */
-.serviceCard{
-  position: relative;
-  overflow: hidden;
-  border-radius: 22px;
-  border: 1px solid rgba(191,151,88,.20);
-  background: linear-gradient(180deg, rgba(18,17,14,.96), rgba(12,11,9,.96));
-  box-shadow: 0 18px 50px rgba(0,0,0,.35);
-  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
-}
-.serviceCard::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(110% 75% at 50% 108%,
-      rgba(191,151,88,.55) 0%,
-      rgba(215,179,122,.28) 34%,
-      transparent 64%);
-  opacity: .80;
-  pointer-events:none;
-}
-.serviceCard::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image: radial-gradient(rgba(255,255,255,.14) 1px, transparent 1px);
-  background-size: 7px 7px;
-  opacity: .22;
-  mix-blend-mode: overlay;
-  pointer-events:none;
-  -webkit-mask-image: radial-gradient(120% 90% at 50% 65%, #000 0%, rgba(0,0,0,.65) 55%, transparent 78%);
-          mask-image: radial-gradient(120% 90% at 50% 65%, #000 0%, rgba(0,0,0,.65) 55%, transparent 78%);
-}
-.serviceCard > *{ position: relative; z-index: 1; }
-
-.iconBox{
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border: 1px solid rgba(215,179,122,.20);
-  background: rgba(255,255,255,.03);
-  box-shadow: 0 10px 24px rgba(0,0,0,.25);
-  margin-bottom: 12px;
-  color: rgba(242,239,230,.95);
-}
-.iconBox svg{ width: 20px; height: 20px; }
-
-@media (hover:hover){
-  .serviceCard:hover{
-    transform: translateY(-7px);
-    border-color: rgba(215,179,122,.40);
-    box-shadow:
-      0 26px 74px rgba(0,0,0,.48),
-      0 0 0 1px rgba(191,151,88,.10) inset;
-  }
-}
-
-.backLink{
-  display:inline-block;
-  margin-top: 12px;
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 700;
-}
-.backLink:hover{ color: var(--text); }
-
   </style>
 </head>
-
 <body>
-  <div class="wrap">
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <img src="logo-branco.png" alt="ArtHeal Studio">
+        <div class="logo-text">ArtHeal Studio</div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="#lista">Serviços</a>
+      </nav>
+    </header>
 
-    <header class="card">
-      <div class="topbar">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div class="logoMark" title="ArtHeal Studio">
-            <img src="logo-branco.png" alt="Logo ArtHeal Studio" />
-          </div>
-          <div>
-            <div style="font-weight:900; letter-spacing:.2px;">ArtHeal Studio</div>
-            <div style="color:var(--muted); font-size:12.5px; margin-top:3px;">Serviços, de forma simples e clara</div>
-          </div>
+    <h1 data-animate>Aqui estão todas as formas como ajudo marcas e profissionais a organizarem sua comunicação</h1>
+    <p class="intro" data-animate>Com clareza e intenção, cada projeto é feito para fortalecer o posicionamento e apoiar o processo de venda.</p>
+
+    <!-- DIVISOR VISUAL -->
+    <div class="visual-divider">
+      <div class="divider-line"></div>
+    </div>
+
+    <section id="lista" data-animate>
+      <h2 class="section-title">Oferta completa</h2>
+      <p style="color: var(--muted); margin-bottom: 30px;">Você pode contratar um trabalho contínuo ou escolher algo pontual, dependendo do seu momento.</p>
+    </section>
+
+    <div class="grid">
+      <!-- Social Media -->
+      <div class="service-card" data-animate>
+        <div class="service-header">
+          <div class="service-title">Social media</div>
+          <span class="service-tag">Principal</span>
         </div>
-
-        <nav class="nav" aria-label="Navegação">
-  <a href="index.html">Home</a>
-  <a href="#lista">Oferta</a>
-</nav>
+        <p class="service-desc">Eu cuido do seu Instagram com estratégia, organização e constância. A ideia é tirar esse peso de você e transformar sua presença digital em algo que trabalha a favor do seu negócio.</p>
+        <ul class="service-list">
+          <li>Planejamento do que postar</li>
+          <li>Ideias de conteúdo com direção</li>
+          <li>Textos, legendas e chamadas que fazem sentido</li>
+          <li>Criação de artes e organização do perfil</li>
+          <li>Conteúdo pensado para atrair e apoiar a venda</li>
+        </ul>
       </div>
 
-        <h1>Aqui estão todas as formas como ajudo marcas e profissionais a organizarem sua comunicação</h1>
-  <p class="sub" style="margin-bottom:0;">
-    Com clareza e intenção, cada projeto é feito para fortalecer o posicionamento e apoiar o processo de venda.
-  </p>
-</header>
-
-    <section class="card" id="lista">
-  <h2 class="section-title">Oferta</h2>
-  <p class="sub" style="margin-bottom:0;">
-    Você pode contratar um trabalho contínuo ou escolher algo pontual, dependendo do seu momento.
-  </p>
-</section>
-
-  <section class="grid">
-    <section class="card mini serviceCard">
-      <div class="iconBox"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 12h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M4 18h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
-      <div class="titleRow">
-        <b>Social media</b>
-        <span class="pill">Principal</span>
-      </div>
-      <p class="sub" style="margin:0;">
-        Eu cuido do seu Instagram com estratégia, organização e constância. A ideia é tirar esse peso de você e transformar sua presença digital em algo que trabalha a favor do seu negócio.
-      </p>
-      <ul>
-        <li>Planejamento do que postar</li>
-        <li>Ideias de conteúdo com direção</li>
-        <li>Textos, legendas e chamadas que fazem sentido</li>
-        <li>Criação de artes e organização do perfil</li>
-        <li>Conteúdo pensado para atrair e apoiar a venda</li>
-      </ul>
-    </section>
-
-    <section class="card mini serviceCard">
-      <div class="iconBox"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16v12H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 7l1.5-2h3L15 7" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 11a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z" stroke="currentColor" stroke-width="2"/></svg></div>
-      <div class="titleRow">
-        <b>Fotografia e vídeo</b>
-        <span class="pill">Avulso</span>
-      </div>
-      <p class="sub" style="margin:0;">
-        Produção de fotos e vídeos pensados para comunicar melhor sua marca, seus produtos ou seus serviços, com direção e estética alinhadas ao seu posicionamento.
-      </p>
-      <ul>
-        <li>Fotografia para marcas e produtos</li>
-        <li>Captação de vídeos para redes sociais</li>
-        <li>Edição de fotos</li>
-        <li>Edição de vídeos</li>
-      </ul>
-    </section>
-
-    <section class="card mini serviceCard">
-      <div class="iconBox"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14.5 4.5l5 5L9 20H4v-5L14.5 4.5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
-      <div class="titleRow">
-        <b>Design</b>
-        <span class="pill">Destaque</span>
-      </div>
-      <p class="sub" style="margin:0;">
-        Criação de peças visuais e identidade para sua marca ficar mais profissional, mais reconhecível e mais coerente em tudo que comunica.
-      </p>
-      <ul>
-        <li>Artes para redes sociais</li>
-        <li>Materiais para anúncios e divulgação, inclusive para tráfego pago</li>
-        <li>Copywriting para anúncios e peças de divulgação</li>
-        <li>Criação de identidade visual</li>
-        <li>Manual de marca</li>
-      </ul>
-    </section>
-
-    <section class="card mini serviceCard">
-      <div class="iconBox"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M4 10h16" stroke="currentColor" stroke-width="2"/><path d="M7 8h.01M10 8h.01M13 8h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div>
-      <div class="titleRow">
-        <b>Criação de sites</b>
-        <span class="pill">Destaque</span>
-      </div>
-      <p class="sub" style="margin:0;">
-        Criação de sites bem estruturados, modernos e funcionais para apresentar sua marca com clareza e passar confiança.
-      </p>
-      <ul>
-        <li>Site institucional</li>
-        <li>Portfólio</li>
-        <li>Página de apresentação ou serviços</li>
-        <li>Estrutura pensada para clareza, navegação e posicionamento</li>
-      </ul>
-    </section>
-
-    <section class="card mini serviceCard">
-      <div class="iconBox"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8 8h8v8H8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
-      <div class="titleRow">
-        <b>Consultoria de IA & Suporte Online</b>
-        <span class="pill">Avulso</span>
-      </div>
-      <p class="sub" style="margin:0;">
-        Consultoria prática para usar inteligência artificial no dia a dia, com foco em comunicação, conteúdo e produtividade. Inclui suporte online.
-      </p>
-      <ul>
-        <li>Uso prático de ferramentas de IA</li>
-        <li>Criação de prompts eficientes</li>
-        <li>Organização de ideias, conteúdos e processos</li>
-        <li>Suporte online</li>
-      </ul>
-    </section>
-
-    <section class="card mini serviceCard">
-      <div class="iconBox"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 7h10v10H7z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 3h6v4H9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
-      <div class="titleRow">
-        <b>Pacotes e materiais prontos</b>
-        <span class="pill">Avulso</span>
-      </div>
-      <p class="sub" style="margin:0;">
-        Materiais prontos para quem quer agilidade e autonomia na criação.
-      </p>
-      <ul>
-        <li>Artes editáveis</li>
-        <li>Pacote de prompts prontos para ChatGPT</li>
-        <li>Materiais de apoio para criação</li>
-      </ul>
-    </section>
-
-    <section class="card mini serviceCard" id="contato">
-      <div class="titleRow">
-        <b>Antes de decidir, vamos conversar?</b>
-        <span class="pill">Contato</span>
-      </div>
-      <p class="sub" style="margin:0;">
-        Me conta o seu momento atual e eu te ajudo a escolher o que faz mais sentido agora, sem complicação.
-      </p>
-
-      <div class="btns" style="margin-top:14px;">
-        <a class="btn cta"
-           href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20ajuda%20pra%20escolher%20o%20melhor%20caminho%20pro%20meu%20momento."
-           target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>
+      <!-- Fotografia e Vídeo -->
+      <div class="service-card" data-animate>
+        <div class="service-header">
+          <div class="service-title">Fotografia e vídeo</div>
+          <span class="service-tag">Avulso</span>
+        </div>
+        <p class="service-desc">Produção de fotos e vídeos pensados para comunicar melhor sua marca, seus produtos ou seus serviços, com direção e estética alinhadas ao seu posicionamento.</p>
+        <ul class="service-list">
+          <li>Fotografia para marcas e produtos</li>
+          <li>Captação de vídeos para redes sociais</li>
+          <li>Edição de fotos</li>
+          <li>Edição de vídeos</li>
+        </ul>
       </div>
 
-      <a class="backLink" href="index.html">Voltar para a Home</a>
-    </section>
-  </section>
+      <!-- Design -->
+      <div class="service-card" data-animate>
+        <div class="service-header">
+          <div class="service-title">Design</div>
+          <span class="service-tag">Destaque</span>
+        </div>
+        <p class="service-desc">Criação de peças visuais e identidade para sua marca ficar mais profissional, mais reconhecível e mais coerente em tudo que comunica.</p>
+        <ul class="service-list">
+          <li>Artes para redes sociais</li>
+          <li>Materiais para anúncios e divulgação</li>
+          <li>Copywriting para anúncios e peças</li>
+          <li>Criação de identidade visual</li>
+          <li>Manual de marca</li>
+        </ul>
+      </div>
 
-</div>
+      <!-- Sites -->
+      <div class="service-card" data-animate>
+        <div class="service-header">
+          <div class="service-title">Criação de sites</div>
+          <span class="service-tag">Destaque</span>
+        </div>
+        <p class="service-desc">Criação de sites bem estruturados, modernos e funcionais para apresentar sua marca com clareza e passar confiança.</p>
+        <ul class="service-list">
+          <li>Site institucional</li>
+          <li>Portfólio</li>
+          <li>Página de apresentação ou serviços</li>
+          <li>Estrutura pensada para clareza e navegação</li>
+        </ul>
+      </div>
+
+      <!-- Consultoria IA -->
+      <div class="service-card" data-animate>
+        <div class="service-header">
+          <div class="service-title">Consultoria de IA & Suporte</div>
+          <span class="service-tag">Avulso</span>
+        </div>
+        <p class="service-desc">Consultoria prática para usar inteligência artificial no dia a dia, com foco em comunicação, conteúdo e produtividade. Inclui suporte online.</p>
+        <ul class="service-list">
+          <li>Uso prático de ferramentas de IA</li>
+          <li>Criação de prompts eficientes</li>
+          <li>Organização de ideias e processos</li>
+          <li>Suporte online</li>
+        </ul>
+      </div>
+
+      <!-- Pacotes -->
+      <div class="service-card" data-animate>
+        <div class="service-header">
+          <div class="service-title">Pacotes e materiais prontos</div>
+          <span class="service-tag">Avulso</span>
+        </div>
+        <p class="service-desc">Materiais prontos para quem quer agilidade e autonomia na criação.</p>
+        <ul class="service-list">
+          <li>Artes editáveis</li>
+          <li>Pacote de prompts para ChatGPT</li>
+          <li>Materiais de apoio para criação</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- DIVISOR VISUAL -->
+    <div class="visual-divider">
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="cta-section" data-animate>
+      <h3 class="cta-title">Antes de decidir, vamos conversar?</h3>
+      <p class="cta-text">Me conta o seu momento atual e eu te ajudo a escolher o que faz mais sentido agora, sem complicação.</p>
+      <a class="btn" href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20ajuda%20pra%20escolher%20o%20melhor%20caminho%20pro%20meu%20momento." target="_blank" rel="noopener noreferrer">
+        Chamar no WhatsApp
+      </a>
+      <br>
+      <a class="back-link" href="index.html">← Voltar para a Home</a>
+    </div>
+  </div>
+
+  <a class="whatsapp-float" href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20serviços." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.76.982.998-3.675-.236-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.9 6.994c-.004 5.45-4.438 9.88-9.888 9.88m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.333.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.333 11.893-11.893 0-3.18-1.24-6.162-3.495-8.411"/>
+    </svg>
+  </a>
+
+  <script>
+    // ANIMAÇÃO DE SCROLL
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    });
+
+    document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>

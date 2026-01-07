@@ -27,21 +27,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- JSON-LD (SEO) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "ArtHeal Studio",
-    "url": "https://arthealstudio.github.io/artheal-studio/",
-    "areaServed": "BR",
-    "sameAs": [
-      "https://instagram.com/artheal.studio",
-      "https://www.behance.net/larissaschulz"
-    ]
-  }
-  </script>
-
   <style>
     :root{
       --bg:#0f0f0c;
@@ -51,14 +36,9 @@
       --muted:#c9c3b5;
       --gold:#BF9758;
       --gold2:#d7b37a;
-
       --radius:22px;
       --t:240ms;
       --lift:7px;
-
-      /* Espaço para a flor no rodapé */
-      --flor-width: 240px;
-      --content-padding-left: 60px;
     }
 
     *{ box-sizing:border-box; margin:0; padding:0; }
@@ -74,6 +54,7 @@
         linear-gradient(180deg, var(--bg2), var(--bg));
       overflow-x:hidden;
       text-rendering: optimizeLegibility;
+      position: relative;
     }
 
     body::before{
@@ -85,7 +66,6 @@
       filter: saturate(.92) contrast(.95);
       pointer-events:none;
       z-index:-2;
-      transform: translateZ(0);
     }
     body::after{
       content:"";
@@ -96,114 +76,129 @@
       z-index:-1;
     }
 
-    /* Layout principal */
-    .site-wrapper{
-      display: flex;
-      min-height: 100vh;
-      padding-left: var(--flor-width);
-      position: relative;
-      max-width: 1400px;
+    /* Container principal */
+    .container {
+      max-width: 1200px;
       margin: 0 auto;
-    }
-
-    /* Flor no rodapé esquerdo */
-    .flor-rodape{
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: var(--flor-width);
-      height: 300px;
-      z-index: 1;
-      pointer-events: none;
+      padding: 20px;
+      position: relative;
+      min-height: 100vh;
       display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      padding-bottom: 40px;
+      flex-direction: column;
     }
 
-    .flor-rodape img{
-      width: 180px;
-      height: 180px;
-      opacity: 0.85;
-      filter: drop-shadow(0 8px 24px rgba(0,0,0,.4));
+    /* Header fixo (mobile) */
+    .header-mobile {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(43,38,27,.5);
+    }
+
+    /* Logo */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .logo-img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      border: 1px solid rgba(191,151,88,.3);
+      padding: 8px;
+      background: rgba(255,255,255,.03);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-img img {
+      width: 100%;
+      height: 100%;
       object-fit: contain;
     }
 
-    /* Conteúdo principal */
-    .conteudo-principal{
-      flex: 1;
-      padding: 40px 40px 120px var(--content-padding-left);
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
+    .logo-text {
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 0.3px;
     }
 
-    /* Barra lateral direita */
-    .sidebar-direita{
-      position: fixed;
-      right: 40px;
-      top: 50%;
-      transform: translateY(-50%);
+    /* Layout principal */
+    .main-content {
+      display: flex;
+      gap: 40px;
+      flex: 1;
+    }
+
+    /* Conteúdo central */
+    .content-center {
+      flex: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Barra lateral DIREITA (desktop) */
+    .sidebar-right {
+      width: 200px;
+      position: sticky;
+      top: 40px;
+      height: fit-content;
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      z-index: 100;
+      gap: 15px;
+      padding: 20px;
       background: rgba(15, 15, 12, 0.7);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(43, 38, 27, 0.4);
       border-radius: 20px;
-      padding: 20px 16px;
-      min-width: 140px;
+      margin-top: 20px;
     }
 
-    .sidebar-link{
+    /* Barra lateral BAIXO (mobile) */
+    .sidebar-bottom {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(11, 11, 9, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(43, 38, 27, 0.8);
+      padding: 15px 20px;
+      z-index: 1000;
+      justify-content: space-around;
+    }
+
+    .nav-link {
       color: var(--muted);
       text-decoration: none;
       font-weight: 700;
       font-size: 14px;
-      letter-spacing: 0.3px;
-      padding: 8px 12px;
+      padding: 10px 15px;
       border-radius: 12px;
       transition: all var(--t) ease;
       text-align: center;
-      border: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
     }
 
-    .sidebar-link:hover{
+    .nav-link:hover,
+    .nav-link.active {
       color: var(--gold2);
-      background: rgba(191, 151, 88, 0.08);
-      border-color: rgba(191, 151, 88, 0.2);
-      transform: translateY(-2px);
+      background: rgba(191, 151, 88, 0.1);
     }
 
-    /* CTA fixo no rodapé */
-    .cta-rodape{
-      position: fixed;
-      right: 40px;
-      bottom: 40px;
-      z-index: 1000;
-      background: rgba(11, 11, 9, 0.9);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(43, 38, 27, 0.8);
-      border-radius: 18px;
-      padding: 18px 22px;
-      max-width: 320px;
-      box-shadow: 0 20px 60px rgba(0,0,0,.4);
-    }
-
-    .cta-texto{
-      color: var(--text);
-      font-size: 15px;
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-
-    .cta-texto b{
-      color: var(--gold2);
-    }
-
-    /* Cards e conteúdo */
-    .card{
+    /* Cards */
+    .card {
       background: linear-gradient(180deg, rgba(20,19,15,.96), rgba(16,15,12,.96));
       border: 1px solid rgba(43,38,27,.92);
       border-radius: var(--radius);
@@ -214,16 +209,16 @@
       overflow: hidden;
     }
 
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:0;
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
       background: radial-gradient(700px 250px at 10% 0%, rgba(191,151,88,.10), transparent 60%);
-      pointer-events:none;
+      pointer-events: none;
       opacity: .9;
     }
 
-    h1{
+    h1 {
       font-size: 42px;
       line-height: 1.2;
       letter-spacing: -0.5px;
@@ -235,7 +230,7 @@
       background-clip: text;
     }
 
-    .sub{
+    .sub {
       color: var(--muted);
       line-height: 1.7;
       font-size: 18px;
@@ -243,14 +238,15 @@
       max-width: 600px;
     }
 
-    .btns{
+    /* Botões */
+    .btns {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
       margin: 30px 0;
     }
 
-    a.btn{
+    a.btn {
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -266,25 +262,26 @@
       font-size: 15px;
     }
 
-    a.btn:hover{
+    a.btn:hover {
       transform: translateY(-2px);
       border-color: rgba(191,151,88,.35);
       background: rgba(255,255,255,.05);
     }
 
-    a.btn.cta{
+    a.btn.cta {
       background: linear-gradient(135deg, rgba(191,151,88,.98), rgba(150,112,55,.98));
       color: #1a140a;
       border-color: rgba(191,151,88,.95);
       box-shadow: 0 14px 34px rgba(191,151,88,.22);
     }
 
-    a.btn.cta:hover{
+    a.btn.cta:hover {
       transform: translateY(-3px);
       box-shadow: 0 20px 40px rgba(191,151,88,.3);
     }
 
-    .section-title{
+    /* Títulos de seção */
+    .section-title {
       font-size: 20px;
       color: var(--gold2);
       letter-spacing: .3px;
@@ -292,7 +289,8 @@
       margin-bottom: 16px;
     }
 
-    .bullets{
+    /* Listas */
+    .bullets {
       color: var(--muted);
       line-height: 1.8;
       font-size: 16px;
@@ -300,234 +298,287 @@
       padding-left: 20px;
     }
 
-    .bullets li{
+    .bullets li {
       margin-bottom: 10px;
     }
 
-    /* Logo no topo */
-    .logo-topo{
+    /* CTA fixo */
+    .cta-fixed {
+      position: fixed;
+      right: 30px;
+      bottom: 30px;
+      z-index: 1001;
+      background: rgba(11, 11, 9, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(43, 38, 27, 0.8);
+      border-radius: 18px;
+      padding: 18px 22px;
+      max-width: 320px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.5);
+    }
+
+    .cta-text {
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .cta-text b {
+      color: var(--gold2);
+    }
+
+    /* WhatsApp flutuante */
+    .whatsapp-float {
+      position: fixed;
+      right: 30px;
+      bottom: 100px;
+      z-index: 1000;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #128C7E);
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 30px;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+      transition: all var(--t) ease;
     }
 
-    .logo-topo img{
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      border: 1px solid rgba(191,151,88,.25);
-      padding: 8px;
-      background: rgba(255,255,255,.02);
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(37, 211, 102, 0.4);
     }
 
-    .logo-texto{
-      font-weight: 900;
-      font-size: 18px;
-      letter-spacing: .3px;
+    .whatsapp-float svg {
+      width: 30px;
+      height: 30px;
+      fill: white;
     }
 
     /* Responsivo */
-    @media (max-width: 1200px){
-      :root{
-        --flor-width: 180px;
-        --content-padding-left: 40px;
+    @media (max-width: 1024px) {
+      .main-content {
+        flex-direction: column;
+        gap: 20px;
       }
       
-      .flor-rodape img{
-        width: 140px;
-        height: 140px;
+      .sidebar-right {
+        display: none;
       }
       
-      .sidebar-direita{
+      .sidebar-bottom {
+        display: flex;
+      }
+      
+      .content-center {
+        max-width: 100%;
+        padding-bottom: 80px;
+      }
+      
+      h1 {
+        font-size: 36px;
+      }
+      
+      .cta-fixed {
         right: 20px;
-        padding: 16px 12px;
-        min-width: 120px;
-      }
-      
-      .cta-rodape{
-        right: 20px;
-        bottom: 20px;
+        bottom: 80px;
         max-width: 280px;
+      }
+      
+      .whatsapp-float {
+        right: 20px;
+        bottom: 150px;
       }
     }
 
-    @media (max-width: 768px){
-      .site-wrapper{
-        flex-direction: column;
-        padding-left: 0;
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
       }
       
-      .flor-rodape{
-        position: relative;
-        width: 100%;
-        height: auto;
-        padding: 30px;
-        justify-content: center;
+      .header-mobile {
+        display: flex;
       }
       
-      .flor-rodape img{
-        width: 120px;
-        height: 120px;
+      .logo {
+        margin-bottom: 20px;
       }
       
-      .conteudo-principal{
-        padding: 30px 20px 80px;
-        max-width: 100%;
-      }
-      
-      .sidebar-direita{
-        position: static;
-        transform: none;
-        flex-direction: row;
-        justify-content: center;
-        margin: 30px 0;
-        background: rgba(15, 15, 12, 0.5);
-        width: 100%;
-        max-width: 500px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      .cta-rodape{
-        position: relative;
-        right: auto;
-        bottom: auto;
-        max-width: 100%;
-        margin-top: 40px;
-      }
-      
-      h1{
+      h1 {
         font-size: 32px;
       }
       
-      .sub{
+      .sub {
         font-size: 16px;
+      }
+      
+      .card {
+        padding: 22px;
+      }
+      
+      .cta-fixed {
+        display: none;
+      }
+      
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        right: 15px;
+        bottom: 80px;
+      }
+      
+      .whatsapp-float svg {
+        width: 24px;
+        height: 24px;
       }
     }
 
-    @media (max-width: 480px){
-      h1{
+    @media (max-width: 480px) {
+      h1 {
         font-size: 28px;
       }
       
-      .btns{
+      .btns {
         flex-direction: column;
       }
       
-      a.btn{
+      a.btn {
         width: 100%;
         justify-content: center;
+      }
+      
+      .sidebar-bottom {
+        padding: 12px 15px;
+      }
+      
+      .nav-link {
+        font-size: 12px;
+        padding: 8px 10px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Flor no rodapé esquerdo -->
-  <div class="flor-rodape">
-    <img src="flor-artheal.png" alt="Flor ArtHeal" />
-  </div>
-
-  <div class="site-wrapper">
-    <!-- Conteúdo principal -->
-    <main class="conteudo-principal">
-      <!-- Logo no topo -->
-      <div class="logo-topo">
+  <!-- Header mobile -->
+  <div class="header-mobile">
+    <div class="logo">
+      <div class="logo-img">
         <img src="logo-branco.png" alt="Logo ArtHeal" />
-        <div class="logo-texto">ArtHeal Studio</div>
       </div>
-
-      <!-- Hero -->
-      <section class="card">
-        <h1>Comunicação estratégica, humana e visualmente consciente.</h1>
-        <p class="sub">
-          A ArtHeal ajuda marcas e profissionais a organizarem sua comunicação com clareza, intenção e propósito, indo além do básico e do óbvio.
-        </p>
-        
-        <div class="btns">
-          <a class="btn" href="https://instagram.com/artheal.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a class="btn" href="https://www.behance.net/larissaschulz" target="_blank" rel="noopener noreferrer">Portfólio</a>
-          <a class="btn cta" href="servicos.html">Ver serviços</a>
-        </div>
-      </section>
-
-      <!-- Bloco de dor -->
-      <section class="card" id="dor">
-        <h2 class="section-title">Esse trabalho é pra você se…</h2>
-        <ul class="bullets">
-          <li>não tem tempo pra cuidar da sua vitrine digital</li>
-          <li>posta, mas não vê resultado de verdade</li>
-          <li>trava na hora de decidir o que postar ou por onde começar</li>
-        </ul>
-        <p class="sub" style="margin-top: 20px; margin-bottom: 0">
-          Se você se identificou com pelo menos um ponto, dá pra organizar isso.
-        </p>
-      </section>
-
-      <!-- O que muda -->
-      <section class="card" id="mudancas">
-        <h2 class="section-title">O que muda quando a comunicação é bem feita</h2>
-        <ul class="bullets">
-          <li>as pessoas entendem mais rápido o que você faz</li>
-          <li>sua marca transmite mais confiança</li>
-          <li>postar deixa de ser um peso</li>
-          <li>a comunicação começa a trabalhar a seu favor</li>
-        </ul>
-        <p class="sub" style="margin-top: 20px; margin-bottom: 0">
-          Não é sobre fazer mais. É sobre fazer melhor.
-        </p>
-      </section>
-
-      <!-- Sobre a ArtHeal -->
-      <section class="card" id="sobre">
-        <h2 class="section-title">Sobre a ArtHeal</h2>
-        <p class="sub">
-          A ArtHeal é um estúdio criativo estratégico que ajuda marcas a se comunicarem de forma mais clara, humana e consciente.
-        </p>
-        <p class="sub" style="margin-top: 20px">
-          Aqui, o trabalho vai além da estética. Cada projeto começa com entendimento, organização e intenção, para que a comunicação faça sentido e chegue a quem precisa.
-        </p>
-        <p class="sub" style="margin-top: 20px; margin-bottom: 0">
-          Marketing bem feito não é sobre postar por postar, mas sobre clareza, propósito e conexão real com o público.
-        </p>
-      </section>
-
-      <!-- Convite para serviços -->
-      <section class="card" id="oferta">
-        <h2 class="section-title">Antes de tomar uma decisão, veja o que eu posso te oferecer</h2>
-        <p class="sub" style="margin-bottom: 20px;">
-          Cada marca está em um momento diferente.
-          Na página de serviços, você encontra as formas como eu ajudo a organizar a comunicação, dar direção e criar mensagens que fazem sentido, inclusive na hora de vender.
-        </p>
-        <div class="btns">
-          <a class="btn cta" href="servicos.html">Ver serviços</a>
-        </div>
-      </section>
-
-      <!-- CTA no rodapé (visível apenas no mobile) -->
-      <div class="cta-rodape mobile-only">
-        <div class="cta-texto">
-          <b>Quer um caminho claro pro seu momento?</b><br>
-          Me chama no WhatsApp e eu te digo o melhor próximo passo.
-        </div>
-        <a class="btn cta" href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca." target="_blank" rel="noopener noreferrer">
-          WhatsApp
-        </a>
-      </div>
-    </main>
+      <div class="logo-text">ArtHeal Studio</div>
+    </div>
   </div>
 
-  <!-- Barra lateral direita -->
-  <nav class="sidebar-direita" aria-label="Navegação rápida">
-    <a class="sidebar-link" href="#sobre">Sobre</a>
-    <a class="sidebar-link" href="#mudancas">O que muda</a>
-    <a class="sidebar-link" href="#oferta">Ver oferta</a>
+  <div class="container">
+    <!-- Logo desktop -->
+    <div class="logo desktop-only">
+      <div class="logo-img">
+        <img src="logo-branco.png" alt="Logo ArtHeal" />
+      </div>
+      <div class="logo-text">ArtHeal Studio</div>
+    </div>
+
+    <div class="main-content">
+      <!-- Conteúdo principal -->
+      <div class="content-center">
+        <!-- Hero -->
+        <section class="card">
+          <h1>Comunicação estratégica, humana e visualmente consciente.</h1>
+          <p class="sub">
+            A ArtHeal ajuda marcas e profissionais a organizarem sua comunicação com clareza, intenção e propósito, indo além do básico e do óbvio.
+          </p>
+          
+          <div class="btns">
+            <a class="btn" href="https://instagram.com/artheal.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="btn" href="https://www.behance.net/larissaschulz" target="_blank" rel="noopener noreferrer">Portfólio</a>
+            <a class="btn cta" href="servicos.html">Ver serviços</a>
+          </div>
+        </section>
+
+        <!-- Bloco de dor -->
+        <section class="card" id="dor">
+          <h2 class="section-title">Esse trabalho é pra você se…</h2>
+          <ul class="bullets">
+            <li>não tem tempo pra cuidar da sua vitrine digital</li>
+            <li>posta, mas não vê resultado de verdade</li>
+            <li>trava na hora de decidir o que postar ou por onde começar</li>
+          </ul>
+          <p class="sub" style="margin-top: 20px; margin-bottom: 0">
+            Se você se identificou com pelo menos um ponto, dá pra organizar isso.
+          </p>
+        </section>
+
+        <!-- O que muda -->
+        <section class="card" id="mudancas">
+          <h2 class="section-title">O que muda quando a comunicação é bem feita</h2>
+          <ul class="bullets">
+            <li>as pessoas entendem mais rápido o que você faz</li>
+            <li>sua marca transmite mais confiança</li>
+            <li>postar deixa de ser um peso</li>
+            <li>a comunicação começa a trabalhar a seu favor</li>
+          </ul>
+          <p class="sub" style="margin-top: 20px; margin-bottom: 0">
+            Não é sobre fazer mais. É sobre fazer melhor.
+          </p>
+        </section>
+
+        <!-- Sobre a ArtHeal -->
+        <section class="card" id="sobre">
+          <h2 class="section-title">Sobre a ArtHeal</h2>
+          <p class="sub">
+            A ArtHeal é um estúdio criativo estratégico que ajuda marcas a se comunicarem de forma mais clara, humana e consciente.
+          </p>
+          <p class="sub" style="margin-top: 20px">
+            Aqui, o trabalho vai além da estética. Cada projeto começa com entendimento, organização e intenção, para que a comunicação faça sentido e chegue a quem precisa.
+          </p>
+          <p class="sub" style="margin-top: 20px; margin-bottom: 0">
+            Marketing bem feito não é sobre postar por postar, mas sobre clareza, propósito e conexão real com o público.
+          </p>
+        </section>
+
+        <!-- Convite para serviços -->
+        <section class="card" id="oferta">
+          <h2 class="section-title">Antes de tomar uma decisão, veja o que eu posso te oferecer</h2>
+          <p class="sub" style="margin-bottom: 20px;">
+            Cada marca está em um momento diferente.
+            Na página de serviços, você encontra as formas como eu ajudo a organizar a comunicação, dar direção e criar mensagens que fazem sentido, inclusive na hora de vender.
+          </p>
+          <div class="btns">
+            <a class="btn cta" href="servicos.html">Ver serviços</a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Barra lateral DIREITA (desktop) -->
+      <nav class="sidebar-right desktop-only" aria-label="Navegação rápida">
+        <a class="nav-link" href="#sobre">Sobre</a>
+        <a class="nav-link" href="#mudancas">O que muda</a>
+        <a class="nav-link" href="#oferta">Ver oferta</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Barra lateral BAIXO (mobile) -->
+  <nav class="sidebar-bottom mobile-only" aria-label="Navegação mobile">
+    <a class="nav-link" href="#sobre">
+      <span>Sobre</span>
+    </a>
+    <a class="nav-link" href="#mudancas">
+      <span>O que muda</span>
+    </a>
+    <a class="nav-link" href="#oferta">
+      <span>Ver oferta</span>
+    </a>
+    <a class="nav-link" href="servicos.html">
+      <span>Serviços</span>
+    </a>
   </nav>
 
-  <!-- CTA fixo no rodapé (desktop) -->
-  <div class="cta-rodape desktop-only">
-    <div class="cta-texto">
+  <!-- CTA fixo (desktop) -->
+  <div class="cta-fixed desktop-only">
+    <div class="cta-text">
       <b>Quer um caminho claro pro seu momento?</b><br>
       Me chama no WhatsApp e eu te digo o melhor próximo passo.
     </div>
@@ -536,39 +587,62 @@
     </a>
   </div>
 
+  <!-- WhatsApp flutuante (mobile) -->
+  <a class="whatsapp-float mobile-only" href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca." target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.76.982.998-3.675-.236-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.9 6.994c-.004 5.45-4.438 9.88-9.888 9.88m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.333.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.333 11.893-11.893 0-3.18-1.24-6.162-3.495-8.411"/>
+    </svg>
+  </a>
+
   <script>
-    // Mostrar/ocultar CTA baseado no dispositivo
-    function ajustarCTA() {
-      const mobileCTA = document.querySelector('.mobile-only');
-      const desktopCTA = document.querySelector('.desktop-only');
-      
-      if (window.innerWidth <= 768) {
-        if (mobileCTA) mobileCTA.style.display = 'block';
-        if (desktopCTA) desktopCTA.style.display = 'none';
-      } else {
-        if (mobileCTA) mobileCTA.style.display = 'none';
-        if (desktopCTA) desktopCTA.style.display = 'block';
-      }
-    }
-    
-    // Executar ao carregar e redimensionar
-    window.addEventListener('load', ajustarCTA);
-    window.addEventListener('resize', ajustarCTA);
-    
-    // Smooth scroll para links da sidebar
-    document.querySelectorAll('.sidebar-link').forEach(link => {
-      link.addEventListener('click', (e) => {
+    // Navegação suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+        const targetId = this.getAttribute('href');
+        if(targetId === '#') return;
         
-        if (targetElement) {
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
           window.scrollTo({
             top: targetElement.offsetTop - 80,
             behavior: 'smooth'
           });
+          
+          // Atualizar link ativo (mobile)
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
         }
       });
+    });
+    
+    // Detectar seção ativa ao rolar
+    window.addEventListener('scroll', function() {
+      const sections = document.querySelectorAll('section[id]');
+      const scrollPosition = window.scrollY + 100;
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if(scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            if(link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+    
+    // Inicializar link ativo
+    document.addEventListener('DOMContentLoaded', function() {
+      const firstLink = document.querySelector('.nav-link');
+      if(firstLink) firstLink.classList.add('active');
     });
   </script>
 </body>

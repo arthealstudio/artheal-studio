@@ -1,4 +1,3 @@
-<!-- index.html (SUBSTITUI TUDO no seu index atual) -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -57,16 +56,14 @@
       --t:240ms;
       --lift:7px;
 
-      /* Foto */
-      --heroFotoSize: 120px;     /* mobile */
-      --heroFotoSizeDesk: 140px; /* desktop */
-      --heroFotoY: 35%;
+      /* Espaço para a flor no rodapé */
+      --flor-width: 240px;
+      --content-padding-left: 60px;
     }
 
-    *{ box-sizing:border-box; }
+    *{ box-sizing:border-box; margin:0; padding:0; }
     html{ scroll-behavior:smooth; }
     body{
-      margin:0;
       font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
       color: var(--text);
       min-height:100vh;
@@ -99,33 +96,124 @@
       z-index:-1;
     }
 
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 38px 16px 110px;
-    }
-
-    .reveal{
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 420ms ease, transform 420ms ease;
-    }
-    .reveal.is-visible{
-      opacity:1;
-      transform: translateY(0);
-    }
-
-    .card{
+    /* Layout principal */
+    .site-wrapper{
+      display: flex;
+      min-height: 100vh;
+      padding-left: var(--flor-width);
       position: relative;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Flor no rodapé esquerdo */
+    .flor-rodape{
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: var(--flor-width);
+      height: 300px;
+      z-index: 1;
+      pointer-events: none;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 40px;
+    }
+
+    .flor-rodape img{
+      width: 180px;
+      height: 180px;
+      opacity: 0.85;
+      filter: drop-shadow(0 8px 24px rgba(0,0,0,.4));
+      object-fit: contain;
+    }
+
+    /* Conteúdo principal */
+    .conteudo-principal{
+      flex: 1;
+      padding: 40px 40px 120px var(--content-padding-left);
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    /* Barra lateral direita */
+    .sidebar-direita{
+      position: fixed;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 100;
+      background: rgba(15, 15, 12, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(43, 38, 27, 0.4);
+      border-radius: 20px;
+      padding: 20px 16px;
+      min-width: 140px;
+    }
+
+    .sidebar-link{
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      transition: all var(--t) ease;
+      text-align: center;
+      border: 1px solid transparent;
+    }
+
+    .sidebar-link:hover{
+      color: var(--gold2);
+      background: rgba(191, 151, 88, 0.08);
+      border-color: rgba(191, 151, 88, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* CTA fixo no rodapé */
+    .cta-rodape{
+      position: fixed;
+      right: 40px;
+      bottom: 40px;
+      z-index: 1000;
+      background: rgba(11, 11, 9, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(43, 38, 27, 0.8);
+      border-radius: 18px;
+      padding: 18px 22px;
+      max-width: 320px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+
+    .cta-texto{
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .cta-texto b{
+      color: var(--gold2);
+    }
+
+    /* Cards e conteúdo */
+    .card{
       background: linear-gradient(180deg, rgba(20,19,15,.96), rgba(16,15,12,.96));
       border: 1px solid rgba(43,38,27,.92);
       border-radius: var(--radius);
-      padding: 18px;
+      padding: 28px;
+      margin-bottom: 24px;
       box-shadow: 0 18px 50px rgba(0,0,0,.35);
-      margin-bottom: 14px;
-      overflow:hidden;
-      transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
+      position: relative;
+      overflow: hidden;
     }
+
     .card::before{
       content:"";
       position:absolute;
@@ -134,574 +222,354 @@
       pointer-events:none;
       opacity: .9;
     }
-    .card::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: radial-gradient(520px 160px at 18% 0%, rgba(215,179,122,.12), transparent 62%);
-      opacity: 0;
-      pointer-events:none;
-      transition: opacity var(--t) ease;
-    }
-    .card > *{ position: relative; }
-
-    @media (hover:hover){
-      .card:hover{
-        transform: translateY(calc(-1 * var(--lift)));
-        box-shadow: 0 26px 70px rgba(0,0,0,.45);
-        border-color: rgba(191,151,88,.35);
-      }
-      .card:hover::after{ opacity: 1; }
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .logoMark{
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      border: 1px solid rgba(191,151,88,.25);
-      background: rgba(255,255,255,.02);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      padding: 8px;
-      flex: 0 0 auto;
-    }
-    .logoMark img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
-    }
-
-    .heroFoto{
-      width: var(--heroFotoSize);
-      height: var(--heroFotoSize);
-      border-radius: 999px;
-      border: 1px solid rgba(191,151,88,.55);
-      overflow: hidden;
-      background: rgba(255,255,255,.03);
-      box-shadow: 0 10px 30px rgba(0,0,0,.35);
-      flex: 0 0 auto;
-    }
-    .heroFoto img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 50% var(--heroFotoY);
-      display:block;
-      transform: translateZ(0);
-    }
-
-    .heroHead{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 12px;
-    }
-    .brandText{
-      display:flex;
-      flex-direction:column;
-      gap: 4px;
-      padding-top: 2px;
-      min-width: 0;
-    }
-    .brandText .name{
-      font-weight: 900;
-      letter-spacing: .2px;
-    }
-    .brandText .tag{
-      color: var(--muted);
-      font-size: 12.5px;
-      line-height: 1.35;
-    }
-
-    .nav{
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content:flex-end;
-      margin-top: 10px;
-    }
-    .nav a{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(43,38,27,.92);
-      color: rgba(242,239,230,.92);
-      background: rgba(255,255,255,.015);
-      font-weight: 800;
-      letter-spacing: .2px;
-      transition: border-color var(--t) ease, transform var(--t) ease;
-      font-size: 13px;
-    }
-    @media (hover:hover){
-      .nav a:hover{
-        transform: translateY(-1px);
-        border-color: rgba(191,151,88,.35);
-      }
-    }
 
     h1{
-      margin: 14px 0 10px;
-      font-size: 28px;
-      line-height: 1.25;
-      letter-spacing: .1px;
+      font-size: 42px;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
       font-weight: 900;
-    }
-    .sub{
-      margin: 0 0 14px;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 15px;
-      max-width: 70ch;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #f2efe6 0%, #d7b37a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    .btns{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+    .sub{
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 18px;
+      margin-bottom: 30px;
+      max-width: 600px;
+    }
+
+    .btns{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
 
     a.btn{
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 12px 14px;
-      min-height: 44px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 24px;
       border-radius: 14px;
       border: 1px solid rgba(43,38,27,.92);
       color: var(--text);
       background: rgba(255,255,255,.02);
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: .2px;
-      transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
+      transition: all var(--t) ease;
+      font-size: 15px;
     }
-    @media (hover:hover){
-      a.btn:hover{
-        transform: translateY(-1px);
-        border-color: rgba(191,151,88,.35);
-      }
+
+    a.btn:hover{
+      transform: translateY(-2px);
+      border-color: rgba(191,151,88,.35);
+      background: rgba(255,255,255,.05);
     }
 
     a.btn.cta{
-      background: linear-gradient(180deg, rgba(191,151,88,.98), rgba(150,112,55,.98));
+      background: linear-gradient(135deg, rgba(191,151,88,.98), rgba(150,112,55,.98));
       color: #1a140a;
       border-color: rgba(191,151,88,.95);
       box-shadow: 0 14px 34px rgba(191,151,88,.22);
-      position: relative;
-      overflow:hidden;
     }
-    a.btn.cta::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
-      transform: translateX(-120%);
-      transition: transform 650ms ease;
-      pointer-events:none;
-    }
-    @media (hover:hover){
-      a.btn.cta:hover{
-        transform: translateY(-2px);
-        box-shadow: 0 18px 48px rgba(191,151,88,.33);
-      }
-      a.btn.cta:hover::after{ transform: translateX(120%); }
-    }
-    @keyframes softPulse{
-      0%,100% { box-shadow: 0 14px 34px rgba(191,151,88,.22); }
-      50%     { box-shadow: 0 18px 48px rgba(191,151,88,.33); }
-    }
-    a.btn.cta.pulse{ animation: softPulse 2.4s ease-in-out infinite; }
 
-    .chips{
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 12px;
-    }
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(43,38,27,.92);
-      background: rgba(255,255,255,.015);
-      color: rgba(242,239,230,.92);
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: .15px;
-    }
-    .chip .dot{
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(215,179,122,.72);
-      box-shadow: 0 0 0 3px rgba(215,179,122,.12);
-      flex: 0 0 auto;
+    a.btn.cta:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(191,151,88,.3);
     }
 
     .section-title{
-      margin: 0 0 10px;
-      font-size: 17px;
+      font-size: 20px;
       color: var(--gold2);
       letter-spacing: .3px;
       font-weight: 900;
+      margin-bottom: 16px;
     }
 
     .bullets{
-      margin: 10px 0 0;
-      padding-left: 18px;
       color: var(--muted);
-      line-height: 1.85;
-      font-size: 15px;
+      line-height: 1.8;
+      font-size: 16px;
+      margin: 20px 0;
+      padding-left: 20px;
     }
 
-    .grid-3{
-      display:grid;
-      grid-template-columns: 1fr;
+    .bullets li{
+      margin-bottom: 10px;
+    }
+
+    /* Logo no topo */
+    .logo-topo{
+      display: flex;
+      align-items: center;
       gap: 12px;
+      margin-bottom: 30px;
     }
-    .mini{
-      border: 1px solid rgba(43,38,27,.85);
-      border-radius: 18px;
-      padding: 16px;
+
+    .logo-topo img{
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      border: 1px solid rgba(191,151,88,.25);
+      padding: 8px;
       background: rgba(255,255,255,.02);
-      transition: transform var(--t) ease, border-color var(--t) ease;
     }
-    @media (hover:hover){
-      .mini:hover{
-        transform: translateY(-2px);
-        border-color: rgba(191,151,88,.30);
+
+    .logo-texto{
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: .3px;
+    }
+
+    /* Responsivo */
+    @media (max-width: 1200px){
+      :root{
+        --flor-width: 180px;
+        --content-padding-left: 40px;
+      }
+      
+      .flor-rodape img{
+        width: 140px;
+        height: 140px;
+      }
+      
+      .sidebar-direita{
+        right: 20px;
+        padding: 16px 12px;
+        min-width: 120px;
+      }
+      
+      .cta-rodape{
+        right: 20px;
+        bottom: 20px;
+        max-width: 280px;
       }
     }
 
-    .row{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      margin-bottom: 6px;
-      color: var(--text);
-      font-weight: 900;
-    }
-    .ico{
-      width: 18px; height: 18px;
-      color: var(--gold2);
-      flex: 0 0 auto;
-    }
-    .ico svg{ width:18px; height:18px; display:block; }
-    svg{ fill:none; stroke: currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-
-    @media (min-width: 860px){
-      .wrap{ padding: 44px 18px 120px; }
-      .card{ padding: 22px; }
-      h1{ font-size: 34px; }
-      .sub{ font-size: 16px; }
-      .topbar{ margin-bottom: 14px; }
-      .heroFoto{ width: var(--heroFotoSizeDesk); height: var(--heroFotoSizeDesk); }
-      .grid-3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
-    }
-
-    .cta-bar{
-      position: fixed;
-      left:0; right:0; bottom:0;
-      padding: 10px 14px;
-      background: rgba(11,11,9,.82);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(43,38,27,.9);
-      z-index: 999;
-    }
-    .cta-inner{
-      max-width: 980px;
-      margin: 0 auto;
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .cta-text{
-      color: rgba(242,239,230,.92);
-      font-size: 13px;
-      line-height: 1.3;
-    }
-    .cta-text b{ color: var(--gold2); }
-
-    a:focus-visible{
-      outline: 2px solid rgba(215,179,122,.45);
-      outline-offset: 3px;
-      border-radius: 12px;
+    @media (max-width: 768px){
+      .site-wrapper{
+        flex-direction: column;
+        padding-left: 0;
+      }
+      
+      .flor-rodape{
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 30px;
+        justify-content: center;
+      }
+      
+      .flor-rodape img{
+        width: 120px;
+        height: 120px;
+      }
+      
+      .conteudo-principal{
+        padding: 30px 20px 80px;
+        max-width: 100%;
+      }
+      
+      .sidebar-direita{
+        position: static;
+        transform: none;
+        flex-direction: row;
+        justify-content: center;
+        margin: 30px 0;
+        background: rgba(15, 15, 12, 0.5);
+        width: 100%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .cta-rodape{
+        position: relative;
+        right: auto;
+        bottom: auto;
+        max-width: 100%;
+        margin-top: 40px;
+      }
+      
+      h1{
+        font-size: 32px;
+      }
+      
+      .sub{
+        font-size: 16px;
+      }
     }
 
-    @media (prefers-reduced-motion: reduce){
-      html{ scroll-behavior:auto; }
-      .reveal{ opacity:1; transform:none; transition:none; }
-      a.btn.cta.pulse{ animation:none; }
-      .card, .mini, a.btn, .nav a{ transition:none; }
-      .card::after{ display:none; }
+    @media (max-width: 480px){
+      h1{
+        font-size: 28px;
+      }
+      
+      .btns{
+        flex-direction: column;
+      }
+      
+      a.btn{
+        width: 100%;
+        justify-content: center;
+      }
     }
-  
-/* WhatsApp CTA flutuante (discreto, fora do conteúdo) */
-.wa-side{
-  position: fixed;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 999;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  border-radius: 999px;
-  font-weight: 900;
-  letter-spacing: .3px;
-  color: rgba(245,255,250,.98);
-
-  background:
-    radial-gradient(140% 120% at 85% 20%, rgba(255,255,255,.18), transparent 45%),
-    linear-gradient(90deg, rgba(12,74,43,.98), rgba(31,164,99,.98));
-
-  border: 1px solid rgba(175,255,215,.32);
-  box-shadow:
-    0 16px 44px rgba(31,164,99,.22),
-    0 2px 0 rgba(255,255,255,.05) inset,
-    0 0 0 1px rgba(0,0,0,.25) inset;
-  overflow:hidden;
-}
-.wa-side::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image: radial-gradient(rgba(255,255,255,.22) 1px, transparent 1px);
-  background-size: 6px 6px;
-  opacity: .28;
-  mix-blend-mode: overlay;
-  -webkit-mask-image: radial-gradient(120% 120% at 70% 40%, #000 0%, rgba(0,0,0,.65) 55%, transparent 78%);
-          mask-image: radial-gradient(120% 120% at 70% 40%, #000 0%, rgba(0,0,0,.65) 55%, transparent 78%);
-  pointer-events:none;
-}
-.wa-side::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
-  transform: translateX(-120%);
-  transition: transform 650ms ease;
-  pointer-events:none;
-}
-.wa-side .wa-ico{
-  width: 18px; height: 18px;
-  display:inline-block;
-}
-@media (hover:hover){
-  .wa-side:hover{ transform: translateY(-50%) translateY(-2px); }
-  .wa-side:hover::after{ transform: translateX(120%); }
-}
-
-/* Mobile: vira bolinha no canto */
-.wa-float{
-  position: fixed;
-  right: 14px;
-  bottom: 14px;
-  z-index: 999;
-  width: 54px;
-  height: 54px;
-  border-radius: 999px;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  text-decoration:none;
-
-  background:
-    radial-gradient(140% 120% at 85% 20%, rgba(255,255,255,.18), transparent 45%),
-    linear-gradient(90deg, rgba(12,74,43,.98), rgba(31,164,99,.98));
-
-  border: 1px solid rgba(175,255,215,.32);
-  box-shadow:
-    0 16px 44px rgba(31,164,99,.22),
-    0 2px 0 rgba(255,255,255,.05) inset,
-    0 0 0 1px rgba(0,0,0,.25) inset;
-}
-.wa-float svg{ width: 22px; height: 22px; }
-@media (max-width: 740px){
-  .wa-side{ display:none; }
-  .wa-float{ display:flex; }
-}
-
   </style>
 </head>
 
 <body>
-  <!-- Ícones inline -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
-      <symbol id="i-plan" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h1"/><path d="M3 12h1"/><path d="M3 18h1"/></symbol>
-      <symbol id="i-trending" viewBox="0 0 24 24"><path d="M3 17l7-7 4 4 7-7"/><path d="M14 7h7v7"/></symbol>
-
-      <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/></symbol>
-      <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></symbol>
-      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 0 20"/><path d="M12 2a15.3 15.3 0 0 0 0 20"/></symbol>
-      <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6L12 2z"/><path d="M20 14l.8 2.6L23 17.4l-2.2.8L20 21l-.8-2.8L17 17.4l2.2-.8L20 14z"/></symbol>
-      <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8l-9 5-9-5"/><path d="M3 8l9-5 9 5"/><path d="M21 8v10l-9 5-9-5V8"/></symbol>
-    </defs>
-  </svg>
-
-  <div class="wrap">
-
-    <!-- HERO -->
-    <header class="card reveal" id="topo">
-      <div class="heroHead">
-        <div class="topbar" style="margin:0; align-items:flex-start;">
-          <div class="logoMark" title="ArtHeal Studio">
-            <img src="logo-branco.png" alt="Logo ArtHeal Studio" />
-          </div>
-
-          <div class="brandText">
-            <div class="name">ArtHeal Studio</div>
-            <div class="tag">Criatividade, clareza e intenção, sem complicar</div>
-          </div>
-        </div>
-
-        <div class="heroFoto" title="foto.jpg">
-          <img src="foto.jpg" alt="Foto ArtHeal Studio" loading="eager" decoding="async" />
-        </div>
-      </div>
-
-      <nav class="nav" aria-label="Navegação">
-  <a href="#sobre">Sobre</a>
-  <a href="#mudancas">O que muda</a>
-  <a href="#oferta">Ver oferta</a>
-</nav>
-
-      <h1>Comunicação estratégica, humana e visualmente consciente.</h1>
-      <p class="sub">
-        A ArtHeal ajuda marcas e profissionais a organizarem sua comunicação com clareza, intenção e propósito, indo além do básico e do óbvio.
-      </p>
-
-      <div class="btns" aria-label="Ações principais">
-  <a class="btn" href="https://instagram.com/artheal.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
-  <a class="btn" href="https://www.behance.net/larissaschulz" target="_blank" rel="noopener noreferrer">Portfólio</a>
-  <a class="btn cta" href="servicos.html">Ver serviços</a>
-</div>
-
-    </header>
-
-    <!-- Sobre -->
-    <section class="card reveal" id="sobre">
-      <h2 class="section-title">Sobre a ArtHeal</h2>
-      <p class="sub">
-        A ArtHeal é um estúdio criativo estratégico que ajuda marcas a se comunicarem de forma estratégica, humana e visualmente consciente.
-      </p>
-      <p class="sub" style="margin-top:10px">
-        Aqui, o trabalho vai além da estética. Cada projeto começa com entendimento, organização e intenção, para que a comunicação faça sentido e chegue a quem precisa.
-      </p>
-      <p class="sub" style="margin-top:10px; margin-bottom:0">
-        Marketing bem feito não é sobre postar por postar, mas sobre clareza, propósito e conexão real com o público.
-      </p>
-    </section>
-
-    <!-- Bloco de dor -->
-<section class="card reveal" id="dor">
-  <h2 class="section-title">Esse trabalho é pra você se…</h2>
-  <ul class="bullets">
-    <li>não tem tempo pra postar, organizar conteúdo ou manter o perfil ativo</li>
-    <li>posta, mas não vê resultado de verdade</li>
-    <li>trava na hora de decidir o que postar ou por onde começar</li>
-  </ul>
-  <p class="sub" style="margin-top:12px; margin-bottom:0">
-    Se você se identificou com pelo menos um ponto, dá pra organizar isso.
-  </p>
-</section>
-
-
-    <!-- O que muda -->
-<section class="card reveal" id="mudancas">
-  <h2 class="section-title">O que muda quando a comunicação é bem feita</h2>
-  <ul class="bullets">
-    <li>as pessoas entendem mais rápido o que você faz</li>
-    <li>sua marca transmite mais confiança</li>
-    <li>postar deixa de ser um peso</li>
-    <li>a comunicação começa a trabalhar a seu favor</li>
-  </ul>
-  <p class="sub" style="margin-top:12px; margin-bottom:0">
-    Não é sobre fazer mais. É sobre fazer melhor.
-  </p>
-</section>
-
-
-    <!-- Convite para ver a oferta -->
-<section class="card reveal" id="oferta">
-  <h2 class="section-title">Antes de tomar uma decisão, veja o que eu posso te oferecer</h2>
-  <p class="sub" style="margin-bottom:12px;">
-    Cada marca está em um momento diferente.
-    Na página de serviços, você encontra as formas como eu ajudo a organizar a comunicação, dar direção e criar mensagens que fazem sentido, inclusive na hora de vender.
-  </p>
-  <div class="btns">
-    <a class="btn cta" href="servicos.html">Ver serviços</a>
-  </div>
-</section>
-
-
+  <!-- Flor no rodapé esquerdo -->
+  <div class="flor-rodape">
+    <img src="flor-artheal.png" alt="Flor ArtHeal" />
   </div>
 
-  <!-- CTA FIXO -->
-  <div class="cta-bar" role="complementary" aria-label="Contato rápido">
-    <div class="cta-inner">
-      <div class="cta-text">
-        <b>Quer um caminho claro pro seu momento?</b><br>
-        Me chama no WhatsApp e eu te digo o melhor próximo passo.
+  <div class="site-wrapper">
+    <!-- Conteúdo principal -->
+    <main class="conteudo-principal">
+      <!-- Logo no topo -->
+      <div class="logo-topo">
+        <img src="logo-branco.png" alt="Logo ArtHeal" />
+        <div class="logo-texto">ArtHeal Studio</div>
       </div>
-      <a class="btn cta"
-         href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
-         target="_blank" rel="noopener noreferrer">
-        WhatsApp
-      </a>
+
+      <!-- Hero -->
+      <section class="card">
+        <h1>Comunicação estratégica, humana e visualmente consciente.</h1>
+        <p class="sub">
+          A ArtHeal ajuda marcas e profissionais a organizarem sua comunicação com clareza, intenção e propósito, indo além do básico e do óbvio.
+        </p>
+        
+        <div class="btns">
+          <a class="btn" href="https://instagram.com/artheal.studio" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="btn" href="https://www.behance.net/larissaschulz" target="_blank" rel="noopener noreferrer">Portfólio</a>
+          <a class="btn cta" href="servicos.html">Ver serviços</a>
+        </div>
+      </section>
+
+      <!-- Bloco de dor -->
+      <section class="card" id="dor">
+        <h2 class="section-title">Esse trabalho é pra você se…</h2>
+        <ul class="bullets">
+          <li>não tem tempo pra cuidar da sua vitrine digital</li>
+          <li>posta, mas não vê resultado de verdade</li>
+          <li>trava na hora de decidir o que postar ou por onde começar</li>
+        </ul>
+        <p class="sub" style="margin-top: 20px; margin-bottom: 0">
+          Se você se identificou com pelo menos um ponto, dá pra organizar isso.
+        </p>
+      </section>
+
+      <!-- O que muda -->
+      <section class="card" id="mudancas">
+        <h2 class="section-title">O que muda quando a comunicação é bem feita</h2>
+        <ul class="bullets">
+          <li>as pessoas entendem mais rápido o que você faz</li>
+          <li>sua marca transmite mais confiança</li>
+          <li>postar deixa de ser um peso</li>
+          <li>a comunicação começa a trabalhar a seu favor</li>
+        </ul>
+        <p class="sub" style="margin-top: 20px; margin-bottom: 0">
+          Não é sobre fazer mais. É sobre fazer melhor.
+        </p>
+      </section>
+
+      <!-- Sobre a ArtHeal -->
+      <section class="card" id="sobre">
+        <h2 class="section-title">Sobre a ArtHeal</h2>
+        <p class="sub">
+          A ArtHeal é um estúdio criativo estratégico que ajuda marcas a se comunicarem de forma mais clara, humana e consciente.
+        </p>
+        <p class="sub" style="margin-top: 20px">
+          Aqui, o trabalho vai além da estética. Cada projeto começa com entendimento, organização e intenção, para que a comunicação faça sentido e chegue a quem precisa.
+        </p>
+        <p class="sub" style="margin-top: 20px; margin-bottom: 0">
+          Marketing bem feito não é sobre postar por postar, mas sobre clareza, propósito e conexão real com o público.
+        </p>
+      </section>
+
+      <!-- Convite para serviços -->
+      <section class="card" id="oferta">
+        <h2 class="section-title">Antes de tomar uma decisão, veja o que eu posso te oferecer</h2>
+        <p class="sub" style="margin-bottom: 20px;">
+          Cada marca está em um momento diferente.
+          Na página de serviços, você encontra as formas como eu ajudo a organizar a comunicação, dar direção e criar mensagens que fazem sentido, inclusive na hora de vender.
+        </p>
+        <div class="btns">
+          <a class="btn cta" href="servicos.html">Ver serviços</a>
+        </div>
+      </section>
+
+      <!-- CTA no rodapé (visível apenas no mobile) -->
+      <div class="cta-rodape mobile-only">
+        <div class="cta-texto">
+          <b>Quer um caminho claro pro seu momento?</b><br>
+          Me chama no WhatsApp e eu te digo o melhor próximo passo.
+        </div>
+        <a class="btn cta" href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca." target="_blank" rel="noopener noreferrer">
+          WhatsApp
+        </a>
+      </div>
+    </main>
+  </div>
+
+  <!-- Barra lateral direita -->
+  <nav class="sidebar-direita" aria-label="Navegação rápida">
+    <a class="sidebar-link" href="#sobre">Sobre</a>
+    <a class="sidebar-link" href="#mudancas">O que muda</a>
+    <a class="sidebar-link" href="#oferta">Ver oferta</a>
+  </nav>
+
+  <!-- CTA fixo no rodapé (desktop) -->
+  <div class="cta-rodape desktop-only">
+    <div class="cta-texto">
+      <b>Quer um caminho claro pro seu momento?</b><br>
+      Me chama no WhatsApp e eu te digo o melhor próximo passo.
     </div>
+    <a class="btn cta" href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca." target="_blank" rel="noopener noreferrer">
+      WhatsApp
+    </a>
   </div>
 
   <script>
-    // Reveal ao rolar
-    const items = document.querySelectorAll('.reveal');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (!prefersReducedMotion) {
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            e.target.classList.add('is-visible');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.12 });
-
-      items.forEach(el=> io.observe(el));
-    } else {
-      items.forEach(el=> el.classList.add('is-visible'));
+    // Mostrar/ocultar CTA baseado no dispositivo
+    function ajustarCTA() {
+      const mobileCTA = document.querySelector('.mobile-only');
+      const desktopCTA = document.querySelector('.desktop-only');
+      
+      if (window.innerWidth <= 768) {
+        if (mobileCTA) mobileCTA.style.display = 'block';
+        if (desktopCTA) desktopCTA.style.display = 'none';
+      } else {
+        if (mobileCTA) mobileCTA.style.display = 'none';
+        if (desktopCTA) desktopCTA.style.display = 'block';
+      }
     }
+    
+    // Executar ao carregar e redimensionar
+    window.addEventListener('load', ajustarCTA);
+    window.addEventListener('resize', ajustarCTA);
+    
+    // Smooth scroll para links da sidebar
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
   </script>
-
-<!-- WhatsApp (atalho discreto) -->
-<a class="wa-side" href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
-   target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-  <span class="wa-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h10a4 4 0 0 1 4 4v7a4 4 0 0 1-4 4H10l-5 3V7a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 9.5h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8.5 13h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
-  WhatsApp
-</a>
-
-<a class="wa-float" href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20conversar%20sobre%20minha%20marca."
-   target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3h10a4 4 0 0 1 4 4v7a4 4 0 0 1-4 4H10l-5 3V7a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8.5 9.5h7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M8.5 13h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-</a>
-
 </body>
 </html>

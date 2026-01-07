@@ -1,433 +1,106 @@
-<!-- servicos.html (CRIA UM ARQUIVO NOVO com esse nome, sem acento, e cola tudo) -->
 <!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
   <title>Serviços | ArtHeal Studio</title>
 
-  <meta name="description" content="Veja todos os serviços da ArtHeal: redes sociais e comunicação, design para marcas, criação de sites, consultoria prática de IA e pacotes prontos." />
-  <meta name="robots" content="index,follow" />
-  <meta name="author" content="ArtHeal Studio" />
-  <meta name="theme-color" content="#0b0b09" />
+  <meta name="description" content="Serviços da ArtHeal: redes sociais, design, sites, consultoria de IA e pacotes prontos." />
+  <link rel="icon" href="logo-branco.png" />
   <link rel="canonical" href="https://arthealstudio.github.io/artheal-studio/servicos.html" />
 
-  <meta property="og:title" content="Serviços | ArtHeal Studio" />
-  <meta property="og:description" content="Opções de serviços, de forma simples e clara, para você escolher o que faz sentido no seu momento." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="foto.jpg" />
-
-  <link rel="icon" type="image/png" href="logo-branco.png" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --bg:#0f0f0c;
-      --bg2:#0b0b09;
-      --line:#2b261b;
-      --text:#f2efe6;
-      --muted:#c9c3b5;
-      --gold:#BF9758;
-      --gold2:#d7b37a;
-      --radius:22px;
-      --t:240ms;
-      --lift:7px;
-    }
-
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      color: var(--text);
-      min-height:100vh;
-      background:
-        radial-gradient(900px 520px at 18% 10%, rgba(191,151,88,.22), transparent 60%),
-        radial-gradient(840px 480px at 86% 22%, rgba(215,179,122,.12), transparent 55%),
-        radial-gradient(700px 520px at 55% 120%, rgba(191,151,88,.10), transparent 60%),
-        linear-gradient(180deg, var(--bg2), var(--bg));
-      overflow-x:hidden;
-      text-rendering: optimizeLegibility;
+      font-family:Inter, system-ui, sans-serif;
+      background:#0b0b09;
+      color:#f2efe6;
     }
-
-    body::before{
-      content:"";
-      position: fixed;
-      inset: 0;
-      background: url('bg.jpg') center / cover no-repeat;
-      opacity: .10;
-      filter: saturate(.92) contrast(.95);
-      pointer-events:none;
-      z-index:-2;
-      transform: translateZ(0);
-    }
-    body::after{
-      content:"";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(900px 600px at 20% 0%, rgba(0,0,0,.25), rgba(0,0,0,.55));
-      pointer-events:none;
-      z-index:-1;
-    }
-
-    .wrap{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 38px 16px 60px;
-    }
-
+    .wrap{ max-width:980px; margin:0 auto; padding:40px 16px; }
     .card{
-      position: relative;
-      background: linear-gradient(180deg, rgba(20,19,15,.96), rgba(16,15,12,.96));
-      border: 1px solid rgba(43,38,27,.92);
-      border-radius: var(--radius);
-      padding: 18px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.35);
-      margin-bottom: 14px;
-      overflow:hidden;
-      transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
+      background:#14130f;
+      border:1px solid #2b261b;
+      border-radius:22px;
+      padding:22px;
+      margin-bottom:16px;
     }
-    .card::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: radial-gradient(700px 250px at 10% 0%, rgba(191,151,88,.10), transparent 60%);
-      pointer-events:none;
-      opacity: .9;
-    }
-    .card::after{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background: radial-gradient(520px 160px at 18% 0%, rgba(215,179,122,.12), transparent 62%);
-      opacity: 0;
-      pointer-events:none;
-      transition: opacity var(--t) ease;
-    }
-    .card > *{ position: relative; }
+    h1{ margin-bottom:10px; }
+    h2{ font-size:17px; color:#d7b37a; }
+    p{ color:#c9c3b5; line-height:1.6; }
 
-    @media (hover:hover){
-      .card:hover{
-        transform: translateY(calc(-1 * var(--lift)));
-        box-shadow: 0 26px 70px rgba(0,0,0,.45);
-        border-color: rgba(191,151,88,.35);
-      }
-      .card:hover::after{ opacity: 1; }
-    }
+    .grid{ display:grid; gap:12px; }
+    @media(min-width:860px){ .grid{ grid-template-columns:repeat(2,1fr);} }
 
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
+    .mini{ border:1px solid #2b261b; border-radius:18px; padding:16px; }
+    .row{ font-weight:800; margin-bottom:6px; }
 
-    .logoMark{
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      border: 1px solid rgba(191,151,88,.25);
-      background: rgba(255,255,255,.02);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      overflow:hidden;
-      padding: 8px;
-    }
-    .logoMark img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,.35));
-    }
-
-    .nav{
-      display:flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content:flex-end;
-    }
-    .nav a{
+    .cta{
+      display:inline-block;
+      margin-top:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      background:#1fa463;
+      color:#071a10;
       text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(43,38,27,.92);
-      color: rgba(242,239,230,.92);
-      background: rgba(255,255,255,.015);
-      font-weight: 900;
-      letter-spacing: .2px;
-      transition: border-color var(--t) ease, transform var(--t) ease;
-      font-size: 13px;
-    }
-    @media (hover:hover){
-      .nav a:hover{
-        transform: translateY(-1px);
-        border-color: rgba(191,151,88,.35);
-      }
+      font-weight:800;
     }
 
-    h1{
-      margin: 8px 0 10px;
-      font-size: 28px;
-      line-height: 1.25;
-      letter-spacing: .1px;
-      font-weight: 900;
-    }
-    .sub{
-      margin: 0 0 14px;
-      color: var(--muted);
-      line-height: 1.65;
-      font-size: 15px;
-      max-width: 76ch;
-    }
-
-    .section-title{
-      margin: 0 0 10px;
-      font-size: 17px;
-      color: var(--gold2);
-      letter-spacing: .3px;
-      font-weight: 900;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .mini{
-      border: 1px solid rgba(43,38,27,.85);
-      border-radius: 18px;
-      padding: 16px;
-      background: rgba(255,255,255,.02);
-      transition: transform var(--t) ease, border-color var(--t) ease;
-    }
-    @media (hover:hover){
-      .mini:hover{
-        transform: translateY(-2px);
-        border-color: rgba(191,151,88,.30);
-      }
-    }
-
-    .titleRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .titleRow b{ font-weight: 900; }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(43,38,27,.92);
-      background: rgba(255,255,255,.015);
-      color: rgba(242,239,230,.92);
-      font-weight: 800;
-      font-size: 12.5px;
-      letter-spacing: .15px;
-      flex: 0 0 auto;
-      white-space: nowrap;
-    }
-
-    ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 15px;
-    }
-
-    .btns{ display:flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-    a.btn{
+    .back{
+      display:inline-block;
+      margin-top:12px;
+      color:#c9c3b5;
+      font-size:14px;
       text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 12px 14px;
-      min-height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(43,38,27,.92);
-      color: var(--text);
-      background: rgba(255,255,255,.02);
-      font-weight: 900;
-      letter-spacing: .2px;
-      transition: transform var(--t) ease, box-shadow var(--t) ease, border-color var(--t) ease;
-    }
-    @media (hover:hover){
-      a.btn:hover{
-        transform: translateY(-1px);
-        border-color: rgba(191,151,88,.35);
-      }
-    }
-    a.btn.cta{
-      background: linear-gradient(180deg, rgba(191,151,88,.98), rgba(150,112,55,.98));
-      color: #1a140a;
-      border-color: rgba(191,151,88,.95);
-      box-shadow: 0 14px 34px rgba(191,151,88,.22);
-      position: relative;
-      overflow:hidden;
-    }
-
-    @media (min-width: 860px){
-      .wrap{ padding: 44px 18px 70px; }
-      .card{ padding: 22px; }
-      h1{ font-size: 34px; }
-      .sub{ font-size: 16px; }
-      .grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+<div class="wrap">
 
-    <header class="card">
-      <div class="topbar">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div class="logoMark" title="ArtHeal Studio">
-            <img src="logo-branco.png" alt="Logo ArtHeal Studio" />
-          </div>
-          <div>
-            <div style="font-weight:900; letter-spacing:.2px;">ArtHeal Studio</div>
-            <div style="color:var(--muted); font-size:12.5px; margin-top:3px;">Serviços, de forma simples e clara</div>
-          </div>
-        </div>
+  <header class="card">
+    <h1>Serviços</h1>
+    <p>
+      Você pode contratar trabalho contínuo ou serviços pontuais, dependendo do seu momento.
+    </p>
+  </header>
 
-        <nav class="nav" aria-label="Navegação">
-          <a href="index.html">Home</a>
-          <a href="#lista">Serviços</a>
-          <a href="#contato">Contato</a>
-        </nav>
-      </div>
+  <section class="grid">
+    <div class="mini">
+      <div class="row">📱 Redes sociais e comunicação</div>
+      <p>Planejamento, direção e execução organizada.</p>
+    </div>
 
-      <h1>Serviços</h1>
-      <p class="sub" style="margin-bottom:0;">
-        Você pode contratar o trabalho mensal ou escolher serviços pontuais, dependendo do seu momento. Se quiser, eu te ajudo a escolher o melhor próximo passo.
-      </p>
+    <div class="mini">
+      <div class="row">🎨 Design para marcas</div>
+      <p>Identidade visual, padronização e peças.</p>
+    </div>
 
-      <div class="btns" style="margin-top:14px;">
-        <a class="btn cta"
-           href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20entender%20qual%20servi%C3%A7o%20faz%20sentido%20pra%20mim."
-           target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
-        <a class="btn" href="index.html">Voltar para a Home</a>
-      </div>
-    </header>
+    <div class="mini">
+      <div class="row">🌐 Criação de sites</div>
+      <p>Sites institucionais, portfólios e páginas de serviços.</p>
+    </div>
 
-    <section class="card" id="lista">
-      <h2 class="section-title">Tudo que eu ofereço</h2>
-      <p class="sub" style="margin-bottom:0;">
-        Os nomes são simples de propósito, para ficar claro para quem é leigo e só quer resolver.
-      </p>
-    </section>
+    <div class="mini">
+      <div class="row">🤖 Consultoria de IA</div>
+      <p>Uso prático de IA no dia a dia.</p>
+    </div>
 
-    <section class="grid">
-      <section class="card mini">
-        <div class="titleRow">
-          <b>Redes sociais e comunicação</b>
-          <span class="pill">Principal</span>
-        </div>
-        <p class="sub" style="margin:0;">
-          Planejamento e criação de conteúdo para redes sociais, com foco em organizar a comunicação, deixar a mensagem clara e criar conteúdos que façam sentido para o público.
-        </p>
-        <ul>
-          <li>Briefing e direção de comunicação</li>
-          <li>Planejamento e calendário</li>
-          <li>Textos, artes e execução organizada</li>
-          <li>1 rodada de ajustes alinhados</li>
-        </ul>
-      </section>
+    <div class="mini">
+      <div class="row">📦 Pacotes prontos</div>
+      <p>Materiais e prompts para autonomia.</p>
+    </div>
+  </section>
 
-      <section class="card mini">
-        <div class="titleRow">
-          <b>Design para marcas</b>
-          <span class="pill">Avulso</span>
-        </div>
-        <p class="sub" style="margin:0;">
-          Criação de peças visuais para marcas que precisam de identidade e organização visual, com um visual limpo e consistente.
-        </p>
-        <ul>
-          <li>Artes para redes sociais</li>
-          <li>Materiais digitais, anúncios e peças de divulgação</li>
-          <li>Padronização de feed e identidade visual básica</li>
-        </ul>
-      </section>
+  <section class="card">
+    <h2>Quer ajuda para escolher?</h2>
+    <p>Me conta seu momento e eu te ajudo a decidir, sem complicação.</p>
+    <a class="cta" href="https://wa.me/5542999873392" target="_blank">Chamar no WhatsApp</a><br>
+    <a class="back" href="index.html">← Voltar para a Home</a>
+  </section>
 
-      <section class="card mini">
-        <div class="titleRow">
-          <b>Criação de sites</b>
-          <span class="pill">Destaque</span>
-        </div>
-        <p class="sub" style="margin:0;">
-          Criação de sites simples, modernos e funcionais para marcas e profissionais que precisam de presença online.
-        </p>
-        <ul>
-          <li>Site institucional</li>
-          <li>Portfólio</li>
-          <li>Página de serviços e apresentação</li>
-          <li>Organização básica para SEO</li>
-        </ul>
-      </section>
-
-      <section class="card mini">
-        <div class="titleRow">
-          <b>Consultoria de IA</b>
-          <span class="pill">Destaque</span>
-        </div>
-        <p class="sub" style="margin:0;">
-          Consultoria prática para aprender a usar inteligência artificial no dia a dia do trabalho. Simples, aplicável e sem precisar ser da área de marketing ou tecnologia.
-        </p>
-        <ul>
-          <li>Uso prático de ChatGPT e Gemini</li>
-          <li>Criação de prompts eficientes</li>
-          <li>Geração de imagens com IA para necessidades do dia a dia</li>
-          <li>Organização de ideias, tarefas e conteúdos</li>
-        </ul>
-      </section>
-
-      <section class="card mini">
-        <div class="titleRow">
-          <b>Pacotes e materiais prontos</b>
-          <span class="pill">Avulso</span>
-        </div>
-        <p class="sub" style="margin:0;">
-          Soluções práticas para quem quer autonomia e rapidez, com materiais prontos para usar no dia a dia.
-        </p>
-        <ul>
-          <li>Pacote de prompts prontos</li>
-          <li>Artes editáveis no Canva</li>
-          <li>Materiais de apoio para criação</li>
-        </ul>
-      </section>
-
-      <section class="card mini" id="contato">
-        <div class="titleRow">
-          <b>Quer ajuda para escolher?</b>
-          <span class="pill">Contato</span>
-        </div>
-        <p class="sub" style="margin:0;">
-          Você me diz seu momento e eu te falo o melhor próximo passo. Sem enrolação.
-        </p>
-
-        <div class="btns" style="margin-top:14px;">
-          <a class="btn cta"
-             href="https://wa.me/5542999873392?text=Oi%20ArtHeal%20Studio!%20Quero%20ajuda%20pra%20escolher%20o%20melhor%20servi%C3%A7o%20pra%20mim."
-             target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>
-          <a class="btn" href="index.html">Voltar para a Home</a>
-        </div>
-      </section>
-    </section>
-
-  </div>
+</div>
 </body>
 </html>
